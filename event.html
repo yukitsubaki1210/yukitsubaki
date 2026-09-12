@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>EVENT | ユキツバキ</title>
+
+
+    <style>
+
+
+        /* =========================
+           全体
+        ========================= */
+
+        body {
+
+            background-color: #F7F0E3;
+
+            color: #A83A3A;
+
+            margin: 0;
+
+            font-family: serif;
+        }
+
+
+
+        /* =========================
+           ページタイトル
+        ========================= */
+
+        h1 {
+
+            text-align: center;
+
+            margin-top: 100px;
+
+            font-size: 36px;
+
+            font-weight: normal;
+
+            letter-spacing: 0.15em;
+        }
+
+
+
+        /* =========================
+           HOMEへ戻る
+        ========================= */
+
+        .back {
+
+            text-align: center;
+
+            margin-top: 25px;
+        }
+
+
+        .back a,
+        .back a:visited {
+
+            color: #A83A3A;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            letter-spacing: 0.1em;
+        }
+
+
+        .back a:hover {
+
+            color: #23483A;
+        }
+
+
+
+        /* =========================
+           EVENT全体
+        ========================= */
+
+        .events {
+
+            max-width: 700px;
+
+            margin: 100px auto 150px;
+
+            padding: 0 30px;
+        }
+
+
+
+        /* =========================
+           イベント1件
+        ========================= */
+
+        .event {
+
+            padding: 45px 30px;
+
+            margin-bottom: 40px;
+
+            border-top: 1px solid #A83A3A;
+
+            border-bottom: 1px solid #D8CDBB;
+        }
+
+
+
+        /* =========================
+           日付
+        ========================= */
+
+        .date {
+
+            color: #23483A;
+
+            font-size: 14px;
+
+            letter-spacing: 0.1em;
+
+            margin-bottom: 15px;
+        }
+
+
+
+        /* =========================
+           イベント名
+        ========================= */
+
+        h2 {
+
+            color: #A83A3A;
+
+            font-size: 22px;
+
+            font-weight: normal;
+
+            letter-spacing: 0.08em;
+
+            margin: 0 0 25px;
+        }
+
+
+        h2::before {
+
+            content: "✿ ";
+
+            font-size: 14px;
+        }
+
+
+
+        /* =========================
+           イベント詳細
+        ========================= */
+
+        .event-info {
+
+            color: #23483A;
+
+            font-size: 15px;
+
+            line-height: 2;
+        }
+
+
+        .event-info p {
+
+            margin: 0 0 15px;
+        }
+
+
+
+        /* =========================
+           参加予定
+        ========================= */
+
+        .status {
+
+            display: inline-block;
+
+            color: #A83A3A;
+
+            border: 1px solid #A83A3A;
+
+            padding: 4px 12px;
+
+            margin-bottom: 20px;
+
+            font-size: 13px;
+
+            letter-spacing: 0.08em;
+        }
+
+
+
+        /* =========================
+           ページ下部リンク
+        ========================= */
+
+        .links {
+
+            margin: 100px auto 50px;
+
+            padding-top: 30px;
+
+            border-top: 1px solid #A83A3A;
+
+            text-align: center;
+        }
+
+
+        .links a,
+        .links a:visited {
+
+            display: inline-block;
+
+            margin: 8px 15px;
+
+            color: #A83A3A;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            letter-spacing: 0.1em;
+        }
+
+
+        .links a:hover {
+
+            color: #23483A;
+        }
+
+
+
+        /* =========================
+           TOPへ戻る
+        ========================= */
+
+        .pagetop {
+
+            display: block;
+
+            width: fit-content;
+
+            margin: 0 auto 50px;
+
+            color: #A83A3A;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            letter-spacing: 0.1em;
+        }
+
+
+        .pagetop:visited {
+
+            color: #A83A3A;
+        }
+
+
+        .pagetop:hover {
+
+            color: #23483A;
+        }
+
+
+
+    </style>
+
+</head>
+
+
+
+<body id="top">
+
+
+
+    <!-- =========================
+         ページタイトル
+    ========================= -->
+
+    <h1>
+        EVENT
+    </h1>
+
+
+
+    <div class="back">
+
+        <a href="index.html">
+            ← HOME
+        </a>
+
+    </div>
+
+
+
+    <!-- =========================
+         イベント一覧
+    ========================= -->
+
+    <main class="events">
+
+
+
+        <!-- =====================
+             大阪スーパーコミックシティ
+        ===================== -->
+
+        <article class="event">
+
+
+            <div class="date">
+                2027.01.10
+            </div>
+
+
+            <h2>
+                大阪スーパーコミックシティ
+            </h2>
+
+
+            <div class="status">
+                参加予定
+            </div>
+
+
+            <div class="event-info">
+
+                <p>
+                    2027年1月10日（日）
+                </p>
+
+                <p>
+                    大阪スーパーコミックシティに参加予定です。
+                </p>
+
+                <p>
+                    スペースなどの詳細は、
+                    決まり次第お知らせします。
+                </p>
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =====================
+             春コミ
+        ===================== -->
+
+        <article class="event">
+
+
+            <div class="date">
+                2027.03.21
+            </div>
+
+
+            <h2>
+                春コミ
+            </h2>
+
+
+            <div class="status">
+                参加予定
+            </div>
+
+
+            <div class="event-info">
+
+                <p>
+                    2027年3月21日（日）
+                </p>
+
+                <p>
+                    春コミに参加予定です。
+                </p>
+
+                <p>
+                    スペースなどの詳細は、
+                    決まり次第お知らせします。
+                </p>
+
+            </div>
+
+
+        </article>
+
+
+
+    </main>
+
+
+
+    <!-- =========================
+         ページ下部リンク
+    ========================= -->
+
+    <section class="links">
+
+
+        <a href="index.html">
+            HOME
+        </a>
+
+
+        <a href="about.html">
+            ABOUT
+        </a>
+
+
+        <a href="illustration.html">
+            ILLUSTRATION
+        </a>
+
+
+        <a href="diary.html">
+            DIARY
+        </a>
+
+
+        <a href="event.html">
+            EVENT
+        </a>
+
+
+        <a href="link.html">
+            LINK
+        </a>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         ページ上部へ
+    ========================= -->
+
+    <a
+        href="#top"
+        class="pagetop"
+    >
+        ↑ TOP
+    </a>
+
+
+
+</body>
+
+</html>
