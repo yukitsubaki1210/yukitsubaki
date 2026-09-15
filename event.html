@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>EVENT | ユキツバキ</title>
+
+
+    <style>
+
+
+        /* =========================
+           全体
+        ========================= */
+
+        body {
+
+            background-color: #F7F0E3;
+
+            color: #A83A3A;
+
+            margin: 0;
+
+            font-family: serif;
+        }
+
+
+
+        /* =========================
+           ページタイトル
+        ========================= */
+
+        h1 {
+
+            text-align: center;
+
+            margin-top: 100px;
+
+            font-size: 36px;
+
+            font-weight: normal;
+
+            letter-spacing: 0.15em;
+        }
+
+
+
+        /* =========================
+           HOMEへ戻る
+        ========================= */
+
+        .back {
+
+            text-align: center;
+
+            margin-top: 25px;
+        }
+
+
+        .back a,
+        .back a:visited {
+
+            color: #A83A3A;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            letter-spacing: 0.1em;
+        }
+
+
+        .back a:hover {
+
+            color: #23483A;
+        }
+
+
+
+        /* =========================
+           EVENT全体
+        ========================= */
+
+        .events {
+
+            max-width: 700px;
+
+            margin: 100px auto 150px;
+
+            padding: 0 30px;
+        }
+
+
+
+        /* =========================
+           大きな見出し
+        ========================= */
+
+        .section-title {
+
+            color: #A83A3A;
+
+            font-size: 22px;
+
+            font-weight: normal;
+
+            letter-spacing: 0.1em;
+
+            margin: 0 0 35px;
+
+            padding-bottom: 12px;
+
+            border-bottom: 1px solid #A83A3A;
+        }
+
+
+
+        /* =========================
+           参加予定イベント
+        ========================= */
+
+        .event-list {
+
+            margin-bottom: 120px;
+        }
+
+
+
+        /* =========================
+           イベント1件
+        ========================= */
+
+        .event {
+
+            padding: 30px 20px;
+
+            margin-bottom: 30px;
+
+            border-bottom: 1px solid #D8CDBB;
+        }
+
+
+
+        /* =========================
+           イベント日付
+        ========================= */
+
+        .date {
+
+            color: #23483A;
+
+            font-size: 14px;
+
+            letter-spacing: 0.1em;
+
+            margin-bottom: 12px;
+        }
+
+
+
+        /* =========================
+           イベント名
+        ========================= */
+
+        .event h2 {
+
+            color: #A83A3A;
+
+            font-size: 20px;
+
+            font-weight: normal;
+
+            letter-spacing: 0.08em;
+
+            margin: 0;
+        }
+
+
+        .event h2::before {
+
+            content: "✿ ";
+
+            font-size: 13px;
+        }
+
+
+
+        /* =========================
+           イベント詳細
+        ========================= */
+
+        .event-info {
+
+            color: #23483A;
+
+            font-size: 15px;
+
+            line-height: 2;
+
+            margin-top: 15px;
+        }
+
+
+        .event-info p {
+
+            margin: 0 0 10px;
+        }
+
+
+
+        /* =========================
+           参加予定ステータス
+        ========================= */
+
+        .status {
+
+            display: inline-block;
+
+            color: #A83A3A;
+
+            border: 1px solid #A83A3A;
+
+            padding: 4px 12px;
+
+            margin-top: 15px;
+
+            font-size: 13px;
+
+            letter-spacing: 0.08em;
+        }
+
+
+
+        /* =========================
+           CATALOG
+        ========================= */
+
+        .catalog {
+
+            margin-top: 20px;
+        }
+
+
+
+        /* =========================
+           カタログカテゴリー
+        ========================= */
+
+        .catalog-category {
+
+            margin-bottom: 100px;
+        }
+
+
+
+        /* =========================
+           カテゴリー見出し
+        ========================= */
+
+        .category-title {
+
+            color: #A83A3A;
+
+            font-size: 20px;
+
+            font-weight: normal;
+
+            letter-spacing: 0.1em;
+
+            margin: 0 0 35px;
+
+            padding-bottom: 10px;
+
+            border-bottom: 1px solid #D8CDBB;
+        }
+
+
+        .category-title::before {
+
+            content: "✿ ";
+
+            font-size: 13px;
+        }
+
+
+
+        /* =========================
+           頒布物一覧
+        ========================= */
+
+        .items {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 50px 30px;
+        }
+
+
+
+        /* =========================
+           頒布物1件
+        ========================= */
+
+        .item {
+
+            text-align: center;
+        }
+
+
+
+        /* =========================
+           頒布物画像
+        ========================= */
+
+        .item img {
+
+            width: 85%;
+
+            height: auto;
+
+            display: block;
+
+            margin: 0 auto;
+
+            cursor: pointer;
+
+            transition: opacity 0.2s;
+        }
+
+
+        .item img:hover {
+
+            opacity: 0.8;
+        }
+
+
+
+        /* =========================
+           頒布物タイトル
+        ========================= */
+
+        .item-title {
+
+            color: #A83A3A;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            margin: 15px 0 5px;
+        }
+
+
+
+        /* =========================
+           頒布物説明
+        ========================= */
+
+        .item-description {
+
+            color: #23483A;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+            margin: 0;
+        }
+
+
+
+        /* =========================
+           頒布予定・制作中ステータス
+        ========================= */
+
+        .item-status {
+
+            display: inline-block;
+
+            color: #A83A3A;
+
+            border: 1px solid #A83A3A;
+
+            padding: 4px 12px;
+
+            margin-top: 10px;
+
+            font-size: 12px;
+
+            letter-spacing: 0.08em;
+        }
+
+
+
+        /* =========================
+           頒布済み・完売ステータス
+        ========================= */
+
+        .item-status.soldout {
+
+            color: #23483A;
+
+            border-color: #23483A;
+        }
+
+
+
+        /* =========================
+           漫画・グッズ詳細ビューア
+        ========================= */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            z-index: 1000;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background-color: rgba(35, 72, 58, 0.92);
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+
+        /* =========================
+           ビューア内部
+        ========================= */
+
+        .modal-content {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+
+        /* =========================
+           詳細画像
+        ========================= */
+
+        .modal img {
+
+            max-width: 75%;
+
+            max-height: 85%;
+
+            width: auto;
+
+            height: auto;
+
+            display: block;
+        }
+
+
+
+        /* =========================
+           閉じるボタン
+        ========================= */
+
+        .close {
+
+            position: absolute;
+
+            top: 20px;
+
+            right: 40px;
+
+            color: #F7F0E3;
+
+            font-size: 40px;
+
+            cursor: pointer;
+
+            z-index: 1002;
+        }
+
+
+        .close:hover {
+
+            color: #A83A3A;
+        }
+
+
+
+        /* =========================
+           前へ・次へ
+        ========================= */
+
+        .prev,
+        .next {
+
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #F7F0E3;
+
+            font-size: 50px;
+
+            cursor: pointer;
+
+            user-select: none;
+
+            z-index: 1001;
+
+            padding: 20px;
+        }
+
+
+        .prev {
+
+            left: 20px;
+        }
+
+
+        .next {
+
+            right: 20px;
+        }
+
+
+        .prev:hover,
+        .next:hover {
+
+            color: #A83A3A;
+        }
+
+
+
+        /* =========================
+           ページ番号
+        ========================= */
+
+        .page-number {
+
+            position: absolute;
+
+            bottom: 25px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            color: #F7F0E3;
+
+            font-size: 13px;
+
+            letter-spacing: 0.1em;
+        }
+
+
+
+        /* =========================
+           ページ下部リンク
+        ========================= */
+
+        .links {
+
+            margin: 100px auto 50px;
+
+            padding-top: 30px;
+
+            border-top: 1px solid #A83A3A;
+
+            text-align: center;
+        }
+
+
+        .links a,
+        .links a:visited {
+
+            display: inline-block;
+
+            margin: 8px 15px;
+
+            color: #A83A3A;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            letter-spacing: 0.1em;
+        }
+
+
+        .links a:hover {
+
+            color: #23483A;
+        }
+
+
+
+        /* =========================
+           TOPへ戻る
+        ========================= */
+
+        .pagetop {
+
+            display: block;
+
+            width: fit-content;
+
+            margin: 0 auto 50px;
+
+            color: #A83A3A;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            letter-spacing: 0.1em;
+        }
+
+
+        .pagetop:visited {
+
+            color: #A83A3A;
+        }
+
+
+        .pagetop:hover {
+
+            color: #23483A;
+        }
+
+
+
+        /* =========================
+           スマートフォン対応
+        ========================= */
+
+        @media (max-width: 700px) {
+
+
+            .events {
+
+                padding: 0 20px;
+            }
+
+
+            .event {
+
+                padding: 25px 10px;
+            }
+
+
+            .items {
+
+                grid-template-columns: 1fr;
+
+                gap: 50px;
+            }
+
+
+            .item img {
+
+                width: 75%;
+            }
+
+
+            .modal img {
+
+                max-width: 78%;
+
+                max-height: 82%;
+            }
+
+
+            .prev,
+            .next {
+
+                font-size: 32px;
+
+                padding: 10px;
+            }
+
+
+            .prev {
+
+                left: 5px;
+            }
+
+
+            .next {
+
+                right: 5px;
+            }
+
+
+            .close {
+
+                top: 15px;
+
+                right: 20px;
+
+                font-size: 32px;
+            }
+
+
+        }
+
+
+    </style>
+
+</head>
+
+
+
+<body id="top">
+
+
+
+    <!-- =========================
+         ページタイトル
+    ========================= -->
+
+    <h1>
+        EVENT
+    </h1>
+
+
+
+    <!-- =========================
+         HOMEへ戻る
+    ========================= -->
+
+    <div class="back">
+
+        <a href="index.html">
+            ← HOME
+        </a>
+
+    </div>
+
+
+
+    <!-- =========================
+         EVENT全体
+    ========================= -->
+
+    <main class="events">
+
+
+
+        <!-- =========================
+             参加予定
+        ========================= -->
+
+        <section class="event-list">
+
+
+            <h2 class="section-title">
+                参加予定
+            </h2>
+
+
+
+            <!-- =====================
+                 大阪スーパーコミックシティ
+            ===================== -->
+
+            <article class="event">
+
+
+                <div class="date">
+                    2027年1月10日（日）
+                </div>
+
+
+                <h2>
+                    大阪スーパーコミックシティ
+                </h2>
+
+
+                <div class="status">
+                    参加予定
+                </div>
+
+
+                <div class="event-info">
+
+                    <p>
+                        大阪スーパーコミックシティに参加予定です。
+                    </p>
+
+                    <p>
+                        スペースなどの詳細は、
+                        決まり次第お知らせします。
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =====================
+                 東京春コミ
+            ===================== -->
+
+            <article class="event">
+
+
+                <div class="date">
+                    2027年3月21日（日）
+                </div>
+
+
+                <h2>
+                    東京春コミ
+                </h2>
+
+
+                <div class="status">
+                    参加予定
+                </div>
+
+
+                <div class="event-info">
+
+                    <p>
+                        春コミに参加予定です。
+                    </p>
+
+                    <p>
+                        スペースなどの詳細は、
+                        決まり次第お知らせします。
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             CATALOG
+        ========================= -->
+
+        <section class="catalog">
+
+
+            <h2 class="section-title">
+                CATALOG
+            </h2>
+
+
+
+            <!-- =========================
+                 頒布予定
+                 ※ 頒布予定・制作中をまとめて掲載
+            ========================= -->
+
+            <section class="catalog-category">
+
+
+                <h3 class="category-title">
+                    頒布予定
+                </h3>
+
+
+                <div class="items">
+
+
+
+                    <!-- =====================
+                         頒布予定作品
+                    ===================== -->
+
+                    <article class="item">
+
+
+                        <img
+                            src="plan01.png"
+                            alt="頒布予定作品1"
+                            onclick="openItem(0)"
+                        >
+
+
+                        <p class="item-title">
+                            新刊タイトル
+                        </p>
+
+
+                        <p class="item-description">
+                            2027年1月 頒布予定
+                        </p>
+
+
+                        <div class="item-status">
+                            頒布予定
+                        </div>
+
+
+                    </article>
+
+
+
+                    <!-- =====================
+                         制作中作品
+                    ===================== -->
+
+                    <article class="item">
+
+
+                        <img
+                            src="making01.png"
+                            alt="制作中作品1"
+                            onclick="openItem(1)"
+                        >
+
+
+                        <p class="item-title">
+                            制作中タイトル
+                        </p>
+
+
+                        <p class="item-description">
+                            現在制作中・頒布予定時期未定
+                        </p>
+
+
+                        <div class="item-status">
+                            制作中
+                        </div>
+
+
+                    </article>
+
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 頒布済み
+            ========================= -->
+
+            <section class="catalog-category">
+
+
+                <h3 class="category-title">
+                    頒布済み
+                </h3>
+
+
+                <div class="items">
+
+
+
+                    <!-- =====================
+                         頒布済み作品
+                    ===================== -->
+
+                    <article class="item">
+
+
+                        <img
+                            src="finished01.png"
+                            alt="頒布済み作品1"
+                            onclick="openItem(2)"
+                        >
+
+
+                        <p class="item-title">
+                            きれいな手のはなし
+                        </p>
+
+
+                        <p class="item-description">
+                            過去イベントにて頒布
+                        </p>
+
+
+                        <div class="item-status soldout">
+                            完売
+                        </div>
+
+
+                    </article>
+
+
+
+                </div>
+
+            </section>
+
+
+
+        </section>
+
+
+
+    </main>
+
+
+
+    <!-- =========================
+         詳細ビューア
+    ========================= -->
+
+    <div
+        class="modal"
+        id="itemModal"
+    >
+
+
+        <div class="modal-content">
+
+
+            <!-- 閉じる -->
+
+            <span
+                class="close"
+                onclick="closeItem()"
+            >
+                ×
+            </span>
+
+
+
+            <!-- 前の画像 -->
+
+            <span
+                class="prev"
+                onclick="previousItemPage()"
+            >
+                ‹
+            </span>
+
+
+
+            <!-- 詳細画像 -->
+
+            <img
+                id="itemImage"
+                src=""
+                alt="頒布物詳細"
+            >
+
+
+
+            <!-- 次の画像 -->
+
+            <span
+                class="next"
+                onclick="nextItemPage()"
+            >
+                ›
+            </span>
+
+
+
+            <!-- ページ番号 -->
+
+            <div
+                class="page-number"
+                id="itemPageNumber"
+            >
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         JavaScript
+    ========================= -->
+
+    <script>
+
+
+        /* =========================
+           頒布物データ
+        ========================= */
+
+        const items = [
+
+
+            /* =====================
+               頒布予定
+            ===================== */
+
+            {
+
+                title: "新刊タイトル",
+
+                pages: [
+
+                    "plan01.png",
+
+                    "plan01-detail.png"
+
+                ]
+
+            },
+
+
+            /* =====================
+               制作中
+            ===================== */
+
+            {
+
+                title: "制作中タイトル",
+
+                pages: [
+
+                    "making01.png",
+
+                    "making01-detail.png"
+
+                ]
+
+            },
+
+
+            /* =====================
+               頒布済み
+            ===================== */
+
+            {
+
+                title: "きれいな手のはなし",
+
+                pages: [
+
+                    "finished01.png",
+
+                    "finished01-detail.png"
+
+                ]
+
+            }
+
+
+        ];
+
+
+
+        /* =========================
+           現在の作品・画像
+        ========================= */
+
+        let currentItem = 0;
+
+        let currentItemPage = 0;
+
+
+
+        /* =========================
+           頒布物を開く
+        ========================= */
+
+        function openItem(itemIndex) {
+
+
+            currentItem = itemIndex;
+
+            currentItemPage = 0;
+
+
+            document
+                .getElementById("itemModal")
+                .style.display = "flex";
+
+
+            updateItemPage();
+
+        }
+
+
+
+        /* =========================
+           画像表示
+        ========================= */
+
+        function updateItemPage() {
+
+
+            const item =
+                items[currentItem];
+
+
+            document
+                .getElementById("itemImage")
+                .src =
+                item.pages[currentItemPage];
+
+
+            document
+                .getElementById("itemPageNumber")
+                .textContent =
+                (currentItemPage + 1)
+                + " / "
+                + item.pages.length;
+
+        }
+
+
+
+        /* =========================
+           前の画像
+           最初 → 最後
+        ========================= */
+
+        function previousItemPage() {
+
+
+            const item =
+                items[currentItem];
+
+
+            currentItemPage--;
+
+
+            if (currentItemPage < 0) {
+
+                currentItemPage =
+                    item.pages.length - 1;
+
+            }
+
+
+            updateItemPage();
+
+        }
+
+
+
+        /* =========================
+           次の画像
+           最後 → 最初
+        ========================= */
+
+        function nextItemPage() {
+
+
+            const item =
+                items[currentItem];
+
+
+            currentItemPage++;
+
+
+            if (
+                currentItemPage >= item.pages.length
+            ) {
+
+                currentItemPage = 0;
+
+            }
+
+
+            updateItemPage();
+
+        }
+
+
+
+        /* =========================
+           閉じる
+        ========================= */
+
+        function closeItem() {
+
+            document
+                .getElementById("itemModal")
+                .style.display = "none";
+
+        }
+
+
+
+        /* =========================
+           キーボード操作
+        ========================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+
+                const modal =
+                    document.getElementById("itemModal");
+
+
+                if (
+                    modal.style.display !== "flex"
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    event.key === "ArrowLeft"
+                ) {
+
+                    previousItemPage();
+
+                }
+
+
+                if (
+                    event.key === "ArrowRight"
+                ) {
+
+                    nextItemPage();
+
+                }
+
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeItem();
+
+                }
+
+
+            }
+        );
+
+
+
+        /* =========================
+           背景クリックで閉じる
+        ========================= */
+
+        document
+            .getElementById("itemModal")
+            .addEventListener(
+                "click",
+                function(event) {
+
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeItem();
+
+                    }
+
+                }
+            );
+
+
+    </script>
+
+
+
+    <!-- =========================
+         ページ下部リンク
+    ========================= -->
+
+    <section class="links">
+
+
+        <a href="index.html">
+            HOME
+        </a>
+
+
+        <a href="about.html">
+            ABOUT
+        </a>
+
+
+        <a href="illustration.html">
+            ILLUSTRATION
+        </a>
+
+
+        <a href="comic.html">
+            COMIC
+        </a>
+
+
+        <a href="diary.html">
+            DIARY
+        </a>
+
+
+        <a href="event.html">
+            EVENT
+        </a>
+
+
+        <a href="link.html">
+            LINK
+        </a>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         ページ上部へ
+    ========================= -->
+
+    <a
+        href="#top"
+        class="pagetop"
+    >
+        ↑ TOP
+    </a>
+
+
+
+</body>
+
+</html>
