@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ILLUSTRATION | ユキツバキ</title>
+
+    <style>
+        /* =========================
+           全体
+        ========================= */
+
+        body {
+            background-color: #F7F0E3;
+            color: #A83A3A;
+            margin: 0;
+            font-family: serif;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* =========================
+           ページタイトル
+        ========================= */
+
+        h1 {
+            text-align: center;
+            margin-top: 100px;
+            font-size: 36px;
+            font-weight: normal;
+            letter-spacing: 0.15em;
+        }
+
+        /* =========================
+           HOMEへ戻る
+        ========================= */
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a,
+        .back a:visited {
+            color: #A83A3A;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+        }
+
+        .back a:hover {
+            color: #23483A;
+        }
+
+        /* =========================
+           作品カテゴリー
+        ========================= */
+
+        .category {
+            max-width: 900px;
+            margin: 100px auto 0;
+            padding: 0 30px;
+        }
+
+        /* =========================
+           カテゴリータイトル
+        ========================= */
+
+        .category h2 {
+            color: #A83A3A;
+            font-size: 20px;
+            font-weight: normal;
+            letter-spacing: 0.15em;
+            border-bottom: 1px solid #A83A3A;
+            padding-bottom: 12px;
+        }
+
+        /* =========================
+           作品を横並びにする
+        ========================= */
+
+        .works {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 35px;
+        }
+
+        /* =========================
+           作品1つ分
+        ========================= */
+
+        .work {
+            width: calc(33.333% - 20px);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* =========================
+           作品画像
+        ========================= */
+
+        .work img {
+            width: 70%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .work img:hover {
+            opacity: 0.8;
+        }
+
+        /* =========================
+           作品タイトル
+        ========================= */
+
+        .work p {
+            color: #A83A3A;
+            font-size: 14px;
+            margin-top: 12px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        /* =========================
+           画像ビューア
+        ========================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(35, 72, 58, 0.92);
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            padding: 60px 80px;
+        }
+
+        /* 拡大画像 */
+
+        .modal img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /* =========================
+           閉じるボタン
+        ========================= */
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #F7F0E3;
+            font-size: 40px;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 1002;
+            background: none;
+            border: none;
+            font-family: serif;
+        }
+
+        .close:hover {
+            color: #A83A3A;
+        }
+
+        /* =========================
+           前へ・次へボタン
+        ========================= */
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #F7F0E3;
+            font-size: 48px;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            z-index: 1001;
+            padding: 15px;
+            background: none;
+            border: none;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .prev {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            color: #A83A3A;
+        }
+
+        /* =========================
+           ページ下部リンク
+        ========================= */
+
+        .links {
+            margin: 120px auto 60px;
+            padding-top: 30px;
+            border-top: 1px solid #A83A3A;
+            text-align: center;
+        }
+
+        .links a,
+        .links a:visited {
+            display: inline-block;
+            margin: 8px 15px;
+            color: #A83A3A;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+        }
+
+        .links a:hover {
+            color: #23483A;
+        }
+
+        /* =========================
+           TOPへ戻る
+        ========================= */
+
+        .pagetop {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 50px;
+            color: #A83A3A;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+        }
+
+        .pagetop:visited {
+            color: #A83A3A;
+        }
+
+        .pagetop:hover {
+            color: #23483A;
+        }
+
+        /* =========================
+           スマートフォン対応
+        ========================= */
+
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 30px;
+                margin-top: 70px;
+            }
+
+            .category {
+                padding: 0 20px;
+                margin-top: 75px;
+            }
+
+            .works {
+                gap: 25px 20px;
+            }
+
+            .work {
+                width: calc(50% - 10px);
+            }
+
+            .work img {
+                width: 85%;
+            }
+
+            .modal-content {
+                padding: 60px 45px;
+            }
+
+            .modal img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+            .prev,
+            .next {
+                font-size: 32px;
+                padding: 10px;
+            }
+
+            .prev {
+                left: 0;
+            }
+
+            .next {
+                right: 0;
+            }
+
+            .close {
+                top: 18px;
+                right: 18px;
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- =========================
+         ページタイトル
+    ========================= -->
+
+    <h1>ILLUSTRATION</h1>
+
+    <!-- HOMEへ戻る -->
+
+    <div class="back">
+        <a href="index.html">← HOME</a>
+    </div>
+
+    <!-- =========================
+         運命の巻戻士
+         新しい作品 → 古い作品
+    ========================= -->
+
+    <section class="category">
+        <h2>運命の巻戻士</h2>
+
+        <div class="works">
+
+            <div class="work">
+                <img src="illustration24.png" alt="運命の巻戻士 シライ" onclick="openModal(this)" loading="lazy">
+                <p>シライ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration23.png" alt="運命の巻戻士 シライ" onclick="openModal(this)" loading="lazy">
+                <p>シライ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration22.png" alt="運命の巻戻士 シラクロアカ" onclick="openModal(this)" loading="lazy">
+                <p>シラクロアカ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration21.png" alt="運命の巻戻士 アカバ" onclick="openModal(this)" loading="lazy">
+                <p>アカバ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration20.png" alt="運命の巻戻士 スマクロ" onclick="openModal(this)" loading="lazy">
+                <p>スマクロ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration19.png" alt="運命の巻戻士 ゴロー" onclick="openModal(this)" loading="lazy">
+                <p>ゴロー</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration18.png" alt="運命の巻戻士 クロノ・アカバ" onclick="openModal(this)" loading="lazy">
+                <p>クロノ・アカバ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration17.png" alt="運命の巻戻士 レモン" onclick="openModal(this)" loading="lazy">
+                <p>レモン</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration16.png" alt="運命の巻戻士 シラクロ" onclick="openModal(this)" loading="lazy">
+                <p>シラクロ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration15.png" alt="運命の巻戻士 クロノ" onclick="openModal(this)" loading="lazy">
+                <p>クロノ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration14.png" alt="運命の巻戻士 ハイザキ・クロノ" onclick="openModal(this)" loading="lazy">
+                <p>ハイザキ・クロノ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration13.png" alt="運命の巻戻士 クロノ・アカバ・スマホン" onclick="openModal(this)" loading="lazy">
+                <p>クロノ・アカバ・スマホン</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration12.png" alt="運命の巻戻士 キンスケ・ギン" onclick="openModal(this)" loading="lazy">
+                <p>キンスケ・ギン</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration11.png" alt="運命の巻戻士 巻戻士" onclick="openModal(this)" loading="lazy">
+                <p>巻戻士</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration10.png" alt="運命の巻戻士 レモン" onclick="openModal(this)" loading="lazy">
+                <p>レモン</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration09.png" alt="運命の巻戻士 レモン" onclick="openModal(this)" loading="lazy">
+                <p>レモン</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration08.png" alt="運命の巻戻士 チャイヌ" onclick="openModal(this)" loading="lazy">
+                <p>チャイヌ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration07.png" alt="運命の巻戻士 エンジ" onclick="openModal(this)" loading="lazy">
+                <p>エンジ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration06.png" alt="運命の巻戻士 クロノ" onclick="openModal(this)" loading="lazy">
+                <p>クロノ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration05.png" alt="運命の巻戻士 シライ" onclick="openModal(this)" loading="lazy">
+                <p>シライ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration04.png" alt="運命の巻戻士 シラクロ" onclick="openModal(this)" loading="lazy">
+                <p>シラクロ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration03.png" alt="運命の巻戻士 アカバ" onclick="openModal(this)" loading="lazy">
+                <p>アカバ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration02.png" alt="運命の巻戻士 アカバ" onclick="openModal(this)" loading="lazy">
+                <p>アカバ</p>
+            </div>
+
+            <div class="work">
+                <img src="illustration01.png" alt="運命の巻戻士 アカバ" onclick="openModal(this)" loading="lazy">
+                <p>アカバ</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================
+         コロコロ
+    ========================= -->
+
+    <section class="category">
+        <h2>コロコロ</h2>
+
+        <div class="works">
+
+            <div class="work">
+                <img src="copyright03.png" alt="コロコロ BC_ブラック" onclick="openModal(this)" loading="lazy">
+                <p>BC_ブラック</p>
+            </div>
+
+            <div class="work">
+                <img src="copyright02.png" alt="コロコロ BC_ブラック" onclick="openModal(this)" loading="lazy">
+                <p>BC_ブラック</p>
+            </div>
+
+            <div class="work">
+                <img src="copyright01.png" alt="コロコロ BC_ブラック" onclick="openModal(this)" loading="lazy">
+                <p>BC_ブラック</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================
+         VTuber
+    ========================= -->
+
+    <section class="category">
+        <h2>VTuber</h2>
+
+        <div class="works">
+
+            <div class="work">
+                <img src="vtuber04.png" alt="VTuber 鳩乃はろん" onclick="openModal(this)" loading="lazy">
+                <p>鳩乃はろん</p>
+            </div>
+
+            <div class="work">
+                <img src="vtuber03.png" alt="VTuber 鳩乃はろん" onclick="openModal(this)" loading="lazy">
+                <p>鳩乃はろん</p>
+            </div>
+
+            <div class="work">
+                <img src="vtuber02.png" alt="VTuber 鳩乃はろん" onclick="openModal(this)" loading="lazy">
+                <p>鳩乃はろん</p>
+            </div>
+
+            <div class="work">
+                <img src="vtuber01.png" alt="VTuber 鳩乃はろん" onclick="openModal(this)" loading="lazy">
+                <p>鳩乃はろん</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================
+         ORIGINAL
+    ========================= -->
+
+    <section class="category">
+        <h2>ORIGINAL</h2>
+
+        <div class="works">
+
+            <div class="work">
+                <img src="original03.png" alt="オリジナル作品3" onclick="openModal(this)" loading="lazy">
+                <p>準備中</p>
+            </div>
+
+            <div class="work">
+                <img src="original02.png" alt="オリジナル作品2" onclick="openModal(this)" loading="lazy">
+                <p>準備中</p>
+            </div>
+
+            <div class="work">
+                <img src="original01.png" alt="オリジナル作品1" onclick="openModal(this)" loading="lazy">
+                <p>準備中</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================
+         拡大表示ビューア
+    ========================= -->
+
+    <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-label="イラスト拡大表示">
+
+        <div class="modal-content">
+
+            <button class="close" type="button" onclick="closeModal()" aria-label="閉じる">
+                ×
+            </button>
+
+            <button class="prev" type="button" onclick="showPrevious()" aria-label="前の作品">
+                ‹
+            </button>
+
+            <img id="modalImage" src="" alt="">
+
+            <button class="next" type="button" onclick="showNext()" aria-label="次の作品">
+                ›
+            </button>
+
+        </div>
+    </div>
+
+    <!-- =========================
+         JavaScript
+    ========================= -->
+
+    <script>
+        let currentIndex = 0;
+        let categoryImages = [];
+
+        /* =========================
+           画像を開く
+        ========================= */
+
+        function openModal(image) {
+            const section = image.closest(".category");
+
+            if (!section) {
+                return;
+            }
+
+            categoryImages = Array.from(
+                section.querySelectorAll(".work img")
+            );
+
+            currentIndex = categoryImages.indexOf(image);
+
+            if (currentIndex < 0) {
+                return;
+            }
+
+            document.getElementById("modalImage").src = image.src;
+            document.getElementById("modalImage").alt = image.alt;
+
+            document.getElementById("imageModal").style.display = "flex";
+            document.body.classList.add("modal-open");
+        }
+
+        /* =========================
+           表示中の画像を更新
+        ========================= */
+
+        function updateModalImage() {
+            if (
+                categoryImages.length === 0 ||
+                !categoryImages[currentIndex]
+            ) {
+                return;
+            }
+
+            const image = categoryImages[currentIndex];
+            const modalImage = document.getElementById("modalImage");
+
+            modalImage.src = image.src;
+            modalImage.alt = image.alt;
+        }
+
+        /* =========================
+           前の作品
+           最初 → 最後
+        ========================= */
+
+        function showPrevious() {
+            if (categoryImages.length === 0) {
+                return;
+            }
+
+            currentIndex--;
+
+            if (currentIndex < 0) {
+                currentIndex = categoryImages.length - 1;
+            }
+
+            updateModalImage();
+        }
+
+        /* =========================
+           次の作品
+           最後 → 最初
+        ========================= */
+
+        function showNext() {
+            if (categoryImages.length === 0) {
+                return;
+            }
+
+            currentIndex++;
+
+            if (currentIndex >= categoryImages.length) {
+                currentIndex = 0;
+            }
+
+            updateModalImage();
+        }
+
+        /* =========================
+           閉じる
+        ========================= */
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+            document.body.classList.remove("modal-open");
+        }
+
+        /* =========================
+           キーボード操作
+        ========================= */
+
+        document.addEventListener("keydown", function(event) {
+            const modal = document.getElementById("imageModal");
+
+            if (modal.style.display !== "flex") {
+                return;
+            }
+
+            if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                showPrevious();
+            }
+
+            if (event.key === "ArrowRight") {
+                event.preventDefault();
+                showNext();
+            }
+
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+
+        /* =========================
+           背景クリックで閉じる
+        ========================= */
+
+        document.getElementById("imageModal").addEventListener("click", function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
+        /* =========================
+           スマートフォンの左右スワイプ
+        ========================= */
+
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        const modalContent = document.querySelector(".modal-content");
+
+        modalContent.addEventListener("touchstart", function(event) {
+            if (event.touches.length !== 1) {
+                return;
+            }
+
+            touchStartX = event.touches[0].clientX;
+            touchStartY = event.touches[0].clientY;
+        }, { passive: true });
+
+        modalContent.addEventListener("touchend", function(event) {
+            if (event.changedTouches.length !== 1) {
+                return;
+            }
+
+            const touchEndX = event.changedTouches[0].clientX;
+            const touchEndY = event.changedTouches[0].clientY;
+
+            const diffX = touchEndX - touchStartX;
+            const diffY = touchEndY - touchStartY;
+
+            if (Math.abs(diffX) < 50 || Math.abs(diffX) < Math.abs(diffY)) {
+                return;
+            }
+
+            if (diffX > 0) {
+                showPrevious();
+            } else {
+                showNext();
+            }
+        }, { passive: true });
+    </script>
+
+    <!-- =========================
+         ページ下部リンク
+    ========================= -->
+
+    <section class="links">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="illustration.html">ILLUSTRATION</a>
+        <a href="comic.html">COMIC</a>
+        <a href="diary.html">DIARY</a>
+        <a href="event.html">EVENT</a>
+        <a href="link.html">LINK</a>
+    </section>
+
+    <!-- ページ上部へ -->
+
+    <a href="#top" class="pagetop">
+        ↑ TOP
+    </a>
+
+</body>
+</html>
