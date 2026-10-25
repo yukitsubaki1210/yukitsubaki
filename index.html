@@ -1,31 +1,30 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
-
     <meta charset="UTF-8">
+
+    <!-- スマホの画面幅に合わせる設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ユキツバキ</title>
 
-
     <style>
-
-
         /* =========================
            全体
         ========================= */
 
-        body {
-
-            background-color: #F7F0E3;
-
-            color: #A83A3A;
-
-            margin: 0;
-
-            font-family: serif;
+        * {
+            box-sizing: border-box;
         }
 
+        body {
+            background-color: #F7F0E3;
+            color: #A83A3A;
+            margin: 0;
+            font-family: serif;
+        }
 
 
         /* =========================
@@ -33,24 +32,18 @@
         ========================= */
 
         .site-logo {
-
             text-align: center;
-
             margin-top: 90px;
+            padding: 0 20px;
         }
-
 
         .site-logo img {
-
             width: 120px;
-
+            max-width: 100%;
             height: auto;
-
             display: block;
-
             margin: 0 auto;
         }
-
 
 
         /* =========================
@@ -58,18 +51,12 @@
         ========================= */
 
         h1 {
-
             text-align: center;
-
-            margin-top: 30px;
-
+            margin: 30px 15px 0;
             font-size: 48px;
-
             font-weight: normal;
-
             letter-spacing: 0.15em;
         }
-
 
 
         /* =========================
@@ -77,33 +64,26 @@
         ========================= */
 
         nav {
-
-            text-align: center;
-
-            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px 30px;
+            margin: 50px auto 0;
+            padding: 0 20px;
         }
-
 
         nav a,
         nav a:visited {
-
             color: #A83A3A;
-
             text-decoration: none;
-
-            margin: 0 18px;
-
             font-size: 15px;
-
             letter-spacing: 0.1em;
         }
 
-
         nav a:hover {
-
             color: #23483A;
         }
-
 
 
         /* =========================
@@ -111,14 +91,11 @@
         ========================= */
 
         section {
-
             max-width: 900px;
-
+            width: 100%;
             margin: 120px auto 0;
-
             padding: 0 30px;
         }
-
 
 
         /* =========================
@@ -126,20 +103,13 @@
         ========================= */
 
         h2 {
-
             color: #A83A3A;
-
             font-size: 20px;
-
             font-weight: normal;
-
             letter-spacing: 0.15em;
-
             border-bottom: 1px solid #A83A3A;
-
             padding-bottom: 12px;
         }
-
 
 
         /* =========================
@@ -147,37 +117,28 @@
         ========================= */
 
         .news p {
-
+            display: flex;
+            align-items: baseline;
+            gap: 25px;
             color: #23483A;
-
             font-size: 15px;
-
             margin-top: 25px;
-
             line-height: 2;
         }
 
-
         .news span {
-
-            margin-right: 25px;
+            flex-shrink: 0;
         }
-
 
         .news a,
         .news a:visited {
-
             color: #A83A3A;
-
             text-decoration: none;
         }
 
-
         .news a:hover {
-
             color: #23483A;
         }
-
 
 
         /* =========================
@@ -185,54 +146,37 @@
         ========================= */
 
         .works {
-
             display: flex;
-
             gap: 25px;
-
             margin-top: 30px;
         }
 
-
         .work {
-
             flex: 1;
-
+            min-width: 0;
             text-align: center;
         }
 
-
         .work img {
-
             width: 50%;
-
+            max-width: 100%;
             height: auto;
-
             display: block;
-
             margin: 0 auto;
-
             cursor: pointer;
-
             transition: opacity 0.2s;
         }
 
-
         .work img:hover {
-
             opacity: 0.8;
         }
 
-
         .work p {
-
             color: #A83A3A;
-
             font-size: 14px;
-
+            line-height: 1.8;
             margin-top: 12px;
         }
-
 
 
         /* =========================
@@ -240,62 +184,41 @@
         ========================= */
 
         .modal {
-
             display: none;
-
             position: fixed;
-
             z-index: 1000;
-
             left: 0;
-
             top: 0;
-
             width: 100%;
-
             height: 100%;
-
+            padding: 20px;
             background-color: rgba(35, 72, 58, 0.85);
-
             align-items: center;
-
             justify-content: center;
         }
 
-
         .modal img {
-
+            display: block;
             max-width: 90%;
-
-            max-height: 90%;
-
+            max-height: 85%;
             width: auto;
-
             height: auto;
+            object-fit: contain;
         }
 
-
         .close {
-
             position: absolute;
-
-            top: 25px;
-
-            right: 40px;
-
+            top: 20px;
+            right: 30px;
             color: #F7F0E3;
-
             font-size: 40px;
-
+            line-height: 1;
             cursor: pointer;
         }
 
-
         .close:hover {
-
             color: #A83A3A;
         }
-
 
 
         /* =========================
@@ -303,39 +226,25 @@
         ========================= */
 
         .bottom-menu {
-
             margin: 120px auto 60px;
-
             padding-top: 30px;
-
             border-top: 1px solid #A83A3A;
-
             text-align: center;
         }
 
-
         .bottom-menu a,
         .bottom-menu a:visited {
-
             display: inline-block;
-
             margin: 8px 15px;
-
             color: #A83A3A;
-
             text-decoration: none;
-
             font-size: 14px;
-
             letter-spacing: 0.1em;
         }
 
-
         .bottom-menu a:hover {
-
             color: #23483A;
         }
-
 
 
         /* =========================
@@ -343,44 +252,192 @@
         ========================= */
 
         .pagetop {
-
             display: block;
-
             width: fit-content;
-
             margin: 0 auto 50px;
-
             color: #A83A3A;
-
             text-decoration: none;
-
             font-size: 14px;
-
             letter-spacing: 0.1em;
         }
 
-
         .pagetop:visited {
-
             color: #A83A3A;
         }
 
-
         .pagetop:hover {
-
             color: #23483A;
         }
 
 
+        /* =========================
+           スマホ表示
+        ========================= */
+
+        @media screen and (max-width: 600px) {
+
+            /* ロゴ */
+            .site-logo {
+                margin-top: 55px;
+            }
+
+            .site-logo img {
+                width: 100px;
+            }
+
+            /* サイトタイトル */
+            h1 {
+                margin-top: 24px;
+                font-size: 34px;
+                letter-spacing: 0.12em;
+            }
+
+            /* 上部メニュー */
+            nav {
+                gap: 18px 22px;
+                margin-top: 35px;
+                padding: 0 18px;
+            }
+
+            nav a,
+            nav a:visited {
+                font-size: 13px;
+            }
+
+            /* 各セクション */
+            section {
+                margin-top: 75px;
+                padding: 0 22px;
+            }
+
+            /* セクションタイトル */
+            h2 {
+                font-size: 18px;
+                padding-bottom: 10px;
+            }
+
+            /* NEWS */
+            .news p {
+                display: block;
+                font-size: 14px;
+                line-height: 2;
+                margin-top: 22px;
+                overflow-wrap: anywhere;
+            }
+
+            .news span {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 3px;
+                font-size: 12px;
+            }
+
+            /* 最新イラスト */
+            .works {
+                flex-direction: column;
+                align-items: center;
+                gap: 35px;
+                margin-top: 30px;
+            }
+
+            .work {
+                width: 100%;
+            }
+
+            .work img {
+                width: 65%;
+                max-width: 260px;
+            }
+
+            .work p {
+                font-size: 14px;
+                margin-top: 10px;
+            }
+
+            /* 画像の拡大表示 */
+            .modal {
+                padding: 15px;
+            }
+
+            .modal img {
+                max-width: 100%;
+                max-height: 80%;
+            }
+
+            .close {
+                top: 15px;
+                right: 20px;
+                font-size: 36px;
+            }
+
+            /* ページ下部リンク */
+            .bottom-menu {
+                margin: 80px auto 40px;
+                padding: 25px 12px 0;
+            }
+
+            .bottom-menu a,
+            .bottom-menu a:visited {
+                margin: 10px 9px;
+                font-size: 12px;
+                letter-spacing: 0.06em;
+            }
+
+            /* TOPへ戻る */
+            .pagetop {
+                margin-bottom: 35px;
+                font-size: 13px;
+            }
+        }
+
+
+        /* =========================
+           小さめのスマホ
+        ========================= */
+
+        @media screen and (max-width: 380px) {
+
+            .site-logo img {
+                width: 90px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            nav {
+                gap: 16px 18px;
+            }
+
+            nav a,
+            nav a:visited {
+                font-size: 12px;
+            }
+
+            section {
+                padding: 0 18px;
+            }
+
+            .news p {
+                font-size: 13px;
+            }
+
+            .work img {
+                width: 75%;
+            }
+
+            .bottom-menu a,
+            .bottom-menu a:visited {
+                margin: 8px 7px;
+                font-size: 11px;
+            }
+        }
 
     </style>
-
 </head>
 
 
-
 <body id="top">
-
 
 
     <!-- =========================
@@ -388,14 +445,11 @@
     ========================= -->
 
     <div class="site-logo">
-
         <img
             src="logo.png"
             alt="ユキツバキ ロゴ"
         >
-
     </div>
-
 
 
     <!-- =========================
@@ -407,174 +461,103 @@
     </h1>
 
 
-
     <!-- =========================
          メニュー
     ========================= -->
 
     <nav>
-
-        <a href="about.html">
-            ABOUT
-        </a>
-
-        <a href="illustration.html">
-            ILLUSTRATION
-        </a>
-
-        <a href="comic.html">
-            COMIC
-        </a>
-
-        <a href="diary.html">
-            DIARY
-        </a>
-
-        <a href="event.html">
-            EVENT
-        </a>
-
-
+        <a href="about.html">ABOUT</a>
+        <a href="illustration.html">ILLUSTRATION</a>
+        <a href="comic.html">COMIC</a>
+        <a href="diary.html">DIARY</a>
+        <a href="event.html">EVENT</a>
     </nav>
 
 
-
     <!-- =========================
-     NEWS
-========================= -->
+         NEWS
+    ========================= -->
 
-<section class="news">
+    <section class="news">
 
-    <h2>
-        NEWS
-    </h2>
+        <h2>NEWS</h2>
 
+        <!-- DIARYページ更新 -->
+        <p>
+            <span>2026.10.25</span>
+            <a href="diary.html">
+                DIARYページを更新しました。
+            </a>
+        </p>
 
-    <!-- DIARYページ更新 -->
+        <!-- COMICページ追加 -->
+        <p>
+            <span>2026.09.15</span>
+            <a href="comic.html">
+                COMICページを追加しました。
+            </a>
+        </p>
 
-    <p>
+        <!-- EVENTページ更新 -->
+        <p>
+            <span>2026.10.25</span>
+            <a href="event.html">
+                EVENTページを更新しました。
+            </a>
+        </p>
 
-        <span>
-            2026.10.25
-        </span>
+        <!-- サイト開設 -->
+        <p>
+            <span>2026.09.12</span>
+            サイトを開設しました。
+        </p>
 
-        <a href="diary.html">
-            DIARYページを更新しました。
-        </a>
-
-    </p>
-
-
-    <!-- COMICページ追加 -->
-
-    <p>
-
-        <span>
-            2026.09.15
-        </span>
-
-        <a href="comic.html">
-            COMICページを追加しました。
-        </a>
-
-    </p>
-
-
-    <!-- EVENTページ更新 -->
-
-    <p>
-
-        <span>
-            2026.10.25
-        </span>
-
-        <a href="event.html">
-            EVENTページを更新しました。
-        </a>
-
-    </p>
+    </section>
 
 
-    <!-- サイト開設 -->
-
-    <p>
-
-        <span>
-            2026.09.12
-        </span>
-
-        サイトを開設しました。
-
-    </p>
-
-</section>
     <!-- =========================
          NEW ILLUSTRATION
     ========================= -->
 
     <section class="illustration">
 
-        <h2>
-            NEW ILLUSTRATION
-        </h2>
-
+        <h2>NEW ILLUSTRATION</h2>
 
         <div class="works">
 
-
-
             <div class="work">
-
                 <img
                     src="illustration25.png"
-                    alt="作品1"
+                    alt="シラクロアカ"
                     onclick="openModal(this.src)"
                 >
 
-                <p>
-                    シラクロアカ
-                </p>
-
+                <p>シラクロアカ</p>
             </div>
 
-
-
             <div class="work">
-
                 <img
                     src="vtuber05.png"
-                    alt="作品2"
+                    alt="鳩乃はろん"
                     onclick="openModal(this.src)"
                 >
 
-                <p>
-                    鳩乃はろん
-                </p>
-
+                <p>鳩乃はろん</p>
             </div>
-
-
 
             <div class="work">
-
                 <img
                     src="copyright01.png"
-                    alt="作品3"
+                    alt="ブラック"
                     onclick="openModal(this.src)"
                 >
 
-                <p>
-                    ブラック
-                </p>
-
+                <p>ブラック</p>
             </div>
-
-
 
         </div>
 
     </section>
-
 
 
     <!-- =========================
@@ -584,6 +567,7 @@
     <div
         class="modal"
         id="imageModal"
+        onclick="closeModal()"
     >
 
         <span
@@ -593,11 +577,12 @@
             ×
         </span>
 
-
-        <img id="modalImage">
+        <img
+            id="modalImage"
+            alt="拡大表示"
+        >
 
     </div>
-
 
 
     <!-- =========================
@@ -605,24 +590,20 @@
     ========================= -->
 
     <script>
-
-
         function openModal(imageSrc) {
-
             document.getElementById("imageModal").style.display = "flex";
-
             document.getElementById("modalImage").src = imageSrc;
-
         }
-
 
         function closeModal() {
-
             document.getElementById("imageModal").style.display = "none";
-
+            document.getElementById("modalImage").src = "";
         }
 
-
+        /* 拡大画像そのものをクリックしたときは閉じない */
+        document.getElementById("modalImage").addEventListener("click", function(event) {
+            event.stopPropagation();
+        });
     </script>
 
 
@@ -630,59 +611,28 @@
          ページ下部リンク
     ========================= -->
 
-
     <section class="bottom-menu">
 
-
-        <a href="index.html">
-            HOME
-        </a>
-
-
-        <a href="about.html">
-            ABOUT
-        </a>
-
-
-        <a href="illustration.html">
-            ILLUSTRATION
-        </a>
-
-
-        <a href="comic.html">
-            COMIC
-        </a>
-
-
-        <a href="diary.html">
-            DIARY
-        </a>
-
-
-        <a href="event.html">
-            EVENT
-        </a>
-
-
-
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="illustration.html">ILLUSTRATION</a>
+        <a href="comic.html">COMIC</a>
+        <a href="diary.html">DIARY</a>
+        <a href="event.html">EVENT</a>
 
     </section>
-
 
 
     <!-- =========================
          ページ上部へ
     ========================= -->
 
-    <a
-        href="#top"
-        class="pagetop"
-    >
+    <a href="#top" class="pagetop">
         ↑ TOP
     </a>
-
 
 
 </body>
 
 </html>
+```
