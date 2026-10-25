@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -8,10 +9,7 @@
     <title>COMIC | ユキツバキ</title>
 
     <style>
-        /* =========================
-           全体
-        ========================= */
-
+        /* 全体 */
         body {
             background-color: #F7F0E3;
             color: #A83A3A;
@@ -19,11 +17,7 @@
             font-family: serif;
         }
 
-
-        /* =========================
-           ページタイトル
-        ========================= */
-
+        /* ページタイトル */
         h1 {
             text-align: center;
             margin-top: 100px;
@@ -32,11 +26,7 @@
             letter-spacing: 0.15em;
         }
 
-
-        /* =========================
-           HOMEへ戻る
-        ========================= */
-
+        /* HOMEへ戻る */
         .back {
             text-align: center;
             margin-top: 25px;
@@ -54,11 +44,7 @@
             color: #23483A;
         }
 
-
-        /* =========================
-           漫画一覧
-        ========================= */
-
+        /* 漫画一覧 */
         .comics {
             max-width: 900px;
             margin: 100px auto 150px;
@@ -68,22 +54,14 @@
             gap: 50px 30px;
         }
 
-
-        /* =========================
-           漫画1作品
-        ========================= */
-
+        /* 漫画1作品 */
         .comic {
             width: calc(33.333% - 20px);
             text-align: center;
             box-sizing: border-box;
         }
 
-
-        /* =========================
-           表紙
-        ========================= */
-
+        /* 表紙 */
         .comic img {
             width: 80%;
             height: auto;
@@ -97,11 +75,7 @@
             opacity: 0.8;
         }
 
-
-        /* =========================
-           漫画タイトル
-        ========================= */
-
+        /* 漫画タイトル */
         .comic p {
             color: #A83A3A;
             font-size: 15px;
@@ -109,11 +83,7 @@
             line-height: 1.6;
         }
 
-
-        /* =========================
-           漫画ビューア
-        ========================= */
-
+        /* 漫画ビューア */
         .modal {
             display: none;
             position: fixed;
@@ -129,11 +99,7 @@
             touch-action: pan-y;
         }
 
-
-        /* =========================
-           ビューア内部
-        ========================= */
-
+        /* ビューア内部 */
         .modal-content {
             position: relative;
             width: 100%;
@@ -144,11 +110,7 @@
             overflow: hidden;
         }
 
-
-        /* =========================
-           漫画ページ
-        ========================= */
-
+        /* 漫画ページ */
         .modal img {
             max-width: 75%;
             max-height: 88%;
@@ -160,11 +122,7 @@
             transition: transform 0.25s ease;
         }
 
-
-        /* =========================
-           閉じるボタン
-        ========================= */
-
+        /* 閉じるボタン */
         .close {
             position: absolute;
             top: 20px;
@@ -179,11 +137,7 @@
             color: #A83A3A;
         }
 
-
-        /* =========================
-           前へ・次へ
-        ========================= */
-
+        /* 前へ・次へ */
         .prev,
         .next {
             position: absolute;
@@ -210,11 +164,7 @@
             color: #A83A3A;
         }
 
-
-        /* =========================
-           ページ番号
-        ========================= */
-
+        /* ページ番号 */
         .page-number {
             position: absolute;
             bottom: 25px;
@@ -225,36 +175,46 @@
             letter-spacing: 0.1em;
         }
 
-
-        /* =========================
-           最初のページに戻るリンク
-        ========================= */
-
+        /* 最初のページに戻る：右下の四角い案内ボタン */
         .return-first {
             display: none;
             position: absolute;
-            bottom: 55px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #A83A3A;
-            text-decoration: underline;
-            text-underline-offset: 4px;
+            bottom: 25px;
+            right: 30px;
+            left: auto;
+            transform: none;
+            padding: 12px 24px;
+            border: 1px solid #F7F0E3;
+            border-radius: 0;
+            background-color: transparent;
+            color: #F7F0E3;
+            text-decoration: none;
+            font-family: serif;
             font-size: 14px;
             letter-spacing: 0.08em;
             white-space: nowrap;
             cursor: pointer;
             z-index: 1002;
+            transition: 0.3s;
+            box-sizing: border-box;
+            appearance: none;
+            -webkit-appearance: none;
         }
 
-        .return-first:hover {
-            color: #A83A3A;
+        /* カーソルを合わせた時：赤い背景＋クリーム色の文字 */
+.return-first:hover {
+    background-color: transparent;
+    border-color: #A83A3A;
+    color: #A83A3A;
+}
+
+        /* キーボード操作時のフォーカス */
+        .return-first:focus-visible {
+            outline: 2px solid #F7F0E3;
+            outline-offset: 4px;
         }
 
-
-        /* =========================
-           ページ下部リンク
-        ========================= */
-
+        /* ページ下部リンク */
         .links {
             margin: 120px auto 60px;
             padding-top: 30px;
@@ -276,11 +236,7 @@
             color: #23483A;
         }
 
-
-        /* =========================
-           TOPへ戻る
-        ========================= */
-
+        /* TOPへ戻る */
         .pagetop {
             display: block;
             width: fit-content;
@@ -299,13 +255,8 @@
             color: #23483A;
         }
 
-
-        /* =========================
-           スマートフォン対応
-        ========================= */
-
+        /* スマートフォン対応 */
         @media (max-width: 700px) {
-
             .comics {
                 padding: 0 20px;
                 gap: 40px 20px;
@@ -345,185 +296,118 @@
             }
 
             .return-first {
-                bottom: 60px;
-                font-size: 13px;
+                bottom: 20px;
+                right: 15px;
+                left: auto;
+                transform: none;
+                padding: 10px 14px;
+                font-size: 12px;
             }
 
             .page-number {
                 bottom: 25px;
             }
         }
-
     </style>
 </head>
 
-
 <body id="top">
 
+    <!-- ページタイトル -->
+    <h1>COMIC</h1>
 
-    <!-- =========================
-         ページタイトル
-    ========================= -->
-
-    <h1>
-        COMIC
-    </h1>
-
-
-    <!-- =========================
-         HOMEへ戻る
-    ========================= -->
-
+    <!-- HOMEへ戻る -->
     <div class="back">
-        <a href="index.html">
-            ← HOME
-        </a>
+        <a href="index.html">← HOME</a>
     </div>
 
-
-    <!-- =========================
-         漫画一覧
-         ※ 新しい漫画を上に配置
-    ========================= -->
-
+    <!-- 漫画一覧 -->
     <main class="comics">
 
-
-        <!-- =====================
-             漫画 2
-        ===================== -->
-
+        <!-- 漫画2 -->
         <div class="comic">
-
             <img
                 src="comic02-cover.png"
                 alt="漫画作品2 表紙"
                 onclick="openComic(1)"
             >
 
-            <p>
-                これまでも、これからも。
-            </p>
-
+            <p>これまでも、これからも。</p>
         </div>
 
-
-        <!-- =====================
-             漫画 1
-        ===================== -->
-
+        <!-- 漫画1 -->
         <div class="comic">
-
             <img
                 src="comic01-cover.png"
                 alt="漫画作品1 表紙"
                 onclick="openComic(0)"
             >
 
-            <p>
-                きれいな手のはなし
-            </p>
-
+            <p>きれいな手のはなし</p>
         </div>
 
     </main>
 
-
-    <!-- =========================
-         漫画ビューア
-    ========================= -->
-
-    <div
-        class="modal"
-        id="comicModal"
-    >
+    <!-- 漫画ビューア -->
+    <div class="modal" id="comicModal">
 
         <div class="modal-content">
 
-
             <!-- 閉じる -->
-
             <span
                 class="close"
                 onclick="closeComic()"
                 aria-label="閉じる"
-            >
-                ×
-            </span>
-
+            >×</span>
 
             <!-- 前のページ -->
-
             <span
                 class="prev"
+                id="prevButton"
                 onclick="previousPage()"
                 aria-label="前のページ"
-            >
-                ‹
-            </span>
-
+            >‹</span>
 
             <!-- 漫画ページ -->
-
             <img
                 id="comicImage"
                 src=""
                 alt="漫画ページ"
             >
 
-
             <!-- 次のページ -->
-
             <span
                 class="next"
                 id="nextButton"
                 onclick="nextPage()"
                 aria-label="次のページ"
-            >
-                ›
-            </span>
+            >›</span>
 
-
-            <!-- 最初のページに戻る -->
-
-            <a
-                href="#"
+            <!-- 最初のページに戻るボタン -->
+            <button
+                type="button"
                 class="return-first"
                 id="returnFirst"
-                onclick="returnToFirstPage(event)"
-            >
-                最初のページに戻る
-            </a>
-
+                onclick="returnToFirstPage()"
+            >最初のページに戻る</button>
 
             <!-- ページ番号 -->
-
             <div
                 class="page-number"
                 id="pageNumber"
             ></div>
 
         </div>
-
     </div>
 
-
-    <!-- =========================
-         JavaScript
-    ========================= -->
-
+    <!-- JavaScript -->
     <script>
-
-        /* =========================
-           漫画データ
-        ========================= */
-
+        /* 漫画データ */
         const comics = [
-
             {
                 title: "きれいな手のはなし",
-
                 pages: [
+　　　　　　　　　　　　"comic01-cover.png",
                     "comic01-01.png",
                     "comic01-02.png",
                     "comic01-03.png",
@@ -533,52 +417,30 @@
                     "comic01-07.png"
                 ]
             },
-
             {
-                title: "漫画タイトル2",
-
+                title: "これまでも、これからも。",
                 pages: [
+                    "comic02-cover.png",
                     "comic02-01.png",
-                    "comic02-02.png",
-                    "comic02-03.png",
-                    "comic02-04.png",
-                    "comic02-05.png"
                 ]
             }
-
         ];
 
-
-        /* =========================
-           現在の漫画・ページ
-        ========================= */
-
+        /* 現在の漫画・ページ */
         let currentComic = 0;
         let currentPage = 0;
 
-
-        /* =========================
-           漫画を開く
-        ========================= */
-
+        /* 漫画を開く */
         function openComic(comicIndex) {
-
             currentComic = comicIndex;
             currentPage = 0;
 
             document.getElementById("comicModal").style.display = "flex";
-
             updateComicPage();
-
         }
 
-
-        /* =========================
-           ページ表示
-        ========================= */
-
+        /* ページ表示を更新 */
         function updateComicPage() {
-
             const comic = comics[currentComic];
 
             document.getElementById("comicImage").src =
@@ -587,225 +449,137 @@
             document.getElementById("pageNumber").textContent =
                 (currentPage + 1) + " / " + comic.pages.length;
 
+            const isFirstPage = currentPage === 0;
+            const isLastPage = currentPage === comic.pages.length - 1;
 
-            /* 最終ページかどうかを確認 */
-
-            const isLastPage =
-                currentPage === comic.pages.length - 1;
-
+            /* 最初のページでは「前へ」を隠す */
+            document.getElementById("prevButton").style.display =
+                isFirstPage ? "none" : "block";
 
             /* 最終ページでは「次へ」を隠す */
-
             document.getElementById("nextButton").style.display =
                 isLastPage ? "none" : "block";
 
-
-            /* 最終ページでは「最初のページに戻る」を表示 */
-
+            /* 最終ページだけ戻るボタンを表示 */
             document.getElementById("returnFirst").style.display =
                 isLastPage ? "block" : "none";
-
         }
 
-
-        /* =========================
-           前のページ
-           最初のページより前には進まない
-        ========================= */
-
+        /* 前のページ */
         function previousPage() {
-
             if (currentPage > 0) {
-
                 currentPage--;
-
                 updateComicPage();
-
             }
-
         }
 
-
-        /* =========================
-           次のページ
-           最終ページより先には進まない
-        ========================= */
-
+        /* 次のページ */
         function nextPage() {
-
             const comic = comics[currentComic];
 
             if (currentPage < comic.pages.length - 1) {
-
                 currentPage++;
-
                 updateComicPage();
-
             }
-
         }
 
-
-        /* =========================
-           最初のページに戻る
-        ========================= */
-
-        function returnToFirstPage(event) {
-
-            event.preventDefault();
-
+        /* 最初のページに戻る */
+        function returnToFirstPage() {
             currentPage = 0;
-
             updateComicPage();
-
         }
 
-
-        /* =========================
-           閉じる
-        ========================= */
-
+        /* 閉じる */
         function closeComic() {
-
             document.getElementById("comicModal").style.display = "none";
-
         }
 
-
-        /* =========================
-           キーボード操作
-        ========================= */
-
+        /* キーボード操作 */
         document.addEventListener("keydown", function(event) {
-
             const modal = document.getElementById("comicModal");
 
             if (modal.style.display !== "flex") {
                 return;
             }
 
-            /* 左矢印 → 前のページ */
-
             if (event.key === "ArrowLeft") {
                 previousPage();
             }
-
-            /* 右矢印 → 次のページ */
 
             if (event.key === "ArrowRight") {
                 nextPage();
             }
 
-            /* Escape → 閉じる */
-
             if (event.key === "Escape") {
                 closeComic();
             }
-
         });
 
-
-        /* =========================
-           背景クリックで閉じる
-        ========================= */
-
+        /* 背景クリックで閉じる */
         document.getElementById("comicModal").addEventListener(
             "click",
             function(event) {
-
                 if (event.target === this) {
                     closeComic();
                 }
-
             }
         );
 
-
-        /* =========================
-           スワイプ・ドラッグ操作
-        ========================= */
-
+        /* スワイプ操作 */
         let startX = 0;
         let startY = 0;
-        let isDragging = false;
-
-
-        /* =========================
-           タッチ開始
-        ========================= */
 
         document.getElementById("comicModal").addEventListener(
             "touchstart",
             function(event) {
-
                 startX = event.touches[0].clientX;
                 startY = event.touches[0].clientY;
-
             },
             { passive: true }
         );
 
-
-        /* =========================
-           タッチ終了
-        ========================= */
-
         document.getElementById("comicModal").addEventListener(
             "touchend",
             function(event) {
-
                 const endX = event.changedTouches[0].clientX;
                 const endY = event.changedTouches[0].clientY;
 
                 const distanceX = endX - startX;
                 const distanceY = endY - startY;
 
-                /* 横方向の動きが大きい場合だけページを変更 */
-
                 if (
                     Math.abs(distanceX) > 50 &&
                     Math.abs(distanceX) > Math.abs(distanceY)
                 ) {
-
-                    /* 左へスワイプ → 次のページ */
-
                     if (distanceX < 0) {
                         nextPage();
-                    }
-
-                    /* 右へスワイプ → 前のページ */
-
-                    if (distanceX > 0) {
+                    } else {
                         previousPage();
                     }
-
                 }
-
             },
             { passive: true }
         );
 
-
-        /* =========================
-           マウスドラッグ操作
-        ========================= */
+        /* マウスドラッグ操作 */
+        let isDragging = false;
 
         document.getElementById("comicModal").addEventListener(
             "mousedown",
             function(event) {
+                if (event.target.closest("button, .close, .prev, .next")) {
+                    return;
+                }
 
                 startX = event.clientX;
                 startY = event.clientY;
                 isDragging = true;
-
             }
         );
-
 
         document.getElementById("comicModal").addEventListener(
             "mouseup",
             function(event) {
-
                 if (!isDragging) {
                     return;
                 }
@@ -818,77 +592,38 @@
 
                 isDragging = false;
 
-                /* 横方向に50px以上動かした場合 */
-
                 if (
                     Math.abs(distanceX) > 50 &&
                     Math.abs(distanceX) > Math.abs(distanceY)
                 ) {
-
-                    /* 左へドラッグ → 次のページ */
-
                     if (distanceX < 0) {
                         nextPage();
-                    }
-
-                    /* 右へドラッグ → 前のページ */
-
-                    if (distanceX > 0) {
+                    } else {
                         previousPage();
                     }
-
                 }
-
             }
         );
 
+        /* マウスが画面外で離された場合の誤動作を防止 */
+        document.addEventListener("mouseup", function() {
+            isDragging = false;
+        });
     </script>
 
-
-    <!-- =========================
-         ページ下部リンク
-    ========================= -->
-
+    <!-- ページ下部リンク -->
     <section class="links">
-
-        <a href="index.html">
-            HOME
-        </a>
-
-        <a href="about.html">
-            ABOUT
-        </a>
-
-        <a href="illustration.html">
-            ILLUSTRATION
-        </a>
-
-        <a href="comic.html">
-            COMIC
-        </a>
-
-        <a href="diary.html">
-            DIARY
-        </a>
-
-        <a href="event.html">
-            EVENT
-        </a>
-
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="illustration.html">ILLUSTRATION</a>
+        <a href="comic.html">COMIC</a>
+        <a href="diary.html">DIARY</a>
+        <a href="event.html">EVENT</a>
     </section>
 
-
-    <!-- =========================
-         ページ上部へ
-    ========================= -->
-
-    <a
-        href="#top"
-        class="pagetop"
-    >
-        ↑ TOP
-    </a>
-
+    <!-- ページ上部へ -->
+    <a href="#top" class="pagetop">↑ TOP</a>
 
 </body>
 </html>
+```
