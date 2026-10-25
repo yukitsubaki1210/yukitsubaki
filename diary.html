@@ -2,30 +2,28 @@
 <html lang="ja">
 
 <head>
-
     <meta charset="UTF-8">
+
+    <!-- スマホの画面幅に合わせて表示する設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>DIARY | ユキツバキ</title>
 
-
     <style>
-
-
         /* =========================
            全体
         ========================= */
 
-        body {
-
-            background-color: #F7F0E3;
-
-            color: #A83A3A;
-
-            margin: 0;
-
-            font-family: serif;
+        * {
+            box-sizing: border-box;
         }
 
+        body {
+            background-color: #F7F0E3;
+            color: #A83A3A;
+            margin: 0;
+            font-family: serif;
+        }
 
 
         /* =========================
@@ -33,18 +31,12 @@
         ========================= */
 
         h1 {
-
             text-align: center;
-
-            margin-top: 100px;
-
+            margin: 100px 15px 0;
             font-size: 36px;
-
             font-weight: normal;
-
             letter-spacing: 0.15em;
         }
-
 
 
         /* =========================
@@ -52,31 +44,21 @@
         ========================= */
 
         .back {
-
             text-align: center;
-
             margin-top: 25px;
         }
 
-
         .back a,
         .back a:visited {
-
             color: #A83A3A;
-
             text-decoration: none;
-
             font-size: 14px;
-
             letter-spacing: 0.1em;
         }
 
-
         .back a:hover {
-
             color: #23483A;
         }
-
 
 
         /* =========================
@@ -84,14 +66,11 @@
         ========================= */
 
         .diary {
-
             max-width: 700px;
-
+            width: 100%;
             margin: 100px auto 150px;
-
             padding: 0 30px;
         }
-
 
 
         /* =========================
@@ -99,18 +78,13 @@
         ========================= */
 
         .entry {
-
             padding: 50px 0 60px;
-
             border-bottom: 1px solid #D8CDBB;
         }
 
-
         .entry:first-child {
-
             padding-top: 0;
         }
-
 
 
         /* =========================
@@ -118,16 +92,11 @@
         ========================= */
 
         .date {
-
             color: #23483A;
-
             font-size: 13px;
-
             letter-spacing: 0.1em;
-
             margin-bottom: 12px;
         }
-
 
 
         /* =========================
@@ -135,26 +104,19 @@
         ========================= */
 
         h2 {
-
             color: #A83A3A;
-
             font-size: 21px;
-
             font-weight: normal;
-
             letter-spacing: 0.08em;
-
+            line-height: 1.7;
             margin: 0 0 25px;
+            overflow-wrap: anywhere;
         }
-
 
         h2::before {
-
             content: "✿ ";
-
             font-size: 14px;
         }
-
 
 
         /* =========================
@@ -162,20 +124,19 @@
         ========================= */
 
         .text {
-
             color: #23483A;
-
             font-size: 15px;
-
             line-height: 2.2;
+            overflow-wrap: anywhere;
         }
 
-
         .text p {
-
             margin: 0 0 20px;
         }
 
+        .text p:last-child {
+            margin-bottom: 0;
+        }
 
 
         /* =========================
@@ -183,17 +144,11 @@
         ========================= */
 
         .diary-image {
-
             display: block;
-
             max-width: 80%;
-
             height: auto;
-
             margin: 30px auto;
-
         }
-
 
 
         /* =========================
@@ -201,39 +156,25 @@
         ========================= */
 
         .links {
-
             margin: 100px auto 50px;
-
-            padding-top: 30px;
-
+            padding: 30px 20px 0;
             border-top: 1px solid #A83A3A;
-
             text-align: center;
         }
 
-
         .links a,
         .links a:visited {
-
             display: inline-block;
-
             margin: 8px 15px;
-
             color: #A83A3A;
-
             text-decoration: none;
-
             font-size: 14px;
-
             letter-spacing: 0.1em;
         }
 
-
         .links a:hover {
-
             color: #23483A;
         }
-
 
 
         /* =========================
@@ -241,44 +182,145 @@
         ========================= */
 
         .pagetop {
-
             display: block;
-
             width: fit-content;
-
             margin: 0 auto 50px;
-
             color: #A83A3A;
-
             text-decoration: none;
-
             font-size: 14px;
-
             letter-spacing: 0.1em;
         }
 
-
         .pagetop:visited {
-
             color: #A83A3A;
         }
 
-
         .pagetop:hover {
-
             color: #23483A;
         }
 
 
+        /* =========================
+           スマホ表示
+        ========================= */
+
+        @media screen and (max-width: 600px) {
+
+            /* ページタイトル */
+            h1 {
+                margin-top: 60px;
+                font-size: 30px;
+            }
+
+            /* HOMEへ戻る */
+            .back {
+                margin-top: 20px;
+            }
+
+            /* 日記全体 */
+            .diary {
+                margin: 65px auto 90px;
+                padding: 0 22px;
+            }
+
+            /* 日記1件 */
+            .entry {
+                padding: 35px 0 40px;
+            }
+
+            .entry:first-child {
+                padding-top: 0;
+            }
+
+            /* 日付 */
+            .date {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+
+            /* 日記タイトル */
+            h2 {
+                font-size: 18px;
+                line-height: 1.8;
+                letter-spacing: 0.04em;
+                margin-bottom: 20px;
+            }
+
+            h2::before {
+                font-size: 12px;
+            }
+
+            /* 本文 */
+            .text {
+                font-size: 14px;
+                line-height: 2;
+            }
+
+            .text p {
+                margin-bottom: 18px;
+            }
+
+            /* 日記の画像 */
+            .diary-image {
+                max-width: 100%;
+                margin: 25px auto;
+            }
+
+            /* ページ下部リンク */
+            .links {
+                margin: 70px auto 35px;
+                padding: 25px 12px 0;
+            }
+
+            .links a,
+            .links a:visited {
+                margin: 10px 9px;
+                font-size: 12px;
+                letter-spacing: 0.06em;
+            }
+
+            /* TOPへ戻る */
+            .pagetop {
+                margin-bottom: 35px;
+                font-size: 13px;
+            }
+        }
+
+
+        /* =========================
+           小さめのスマホ
+        ========================= */
+
+        @media screen and (max-width: 380px) {
+
+            .diary {
+                padding: 0 18px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 17px;
+            }
+
+            .text {
+                font-size: 13px;
+            }
+
+            .links a,
+            .links a:visited {
+                margin: 8px 7px;
+                font-size: 12px;
+            }
+        }
 
     </style>
-
 </head>
 
 
-
 <body id="top">
-
 
 
     <!-- =========================
@@ -287,13 +329,9 @@
 
     <h1>DIARY</h1>
 
-
     <div class="back">
-
         <a href="index.html">← HOME</a>
-
     </div>
-
 
 
     <!-- =========================
@@ -303,452 +341,323 @@
     <main class="diary">
 
 
-　　<!-- =====================
-             日記 10
-        ===================== -->
+        <!-- 日記 10 -->
 
         <article class="entry">
-
 
             <div class="date">
                 2026.10.25
             </div>
 
-
             <h2>
                 １月大阪頒布予定のシラアカアクキーが届きました！
             </h2>
 
-
             <div class="text">
-
 
                 <p>
                     すんごく可愛く綺麗に印刷していただきました！うれしー！
                 </p>
 
-
                 <p>
                     お天気の良い日に撮影してサイトのイベントページに掲載したいと思います。
                 </p>
 
-
                 <p>
-                   もう一種類作りたくなってきちゃったな。
+                    もう一種類作りたくなってきちゃったな。
                 </p>
 
-
             </div>
-
 
         </article>
 
 
-
-
-
-
-
-　　　　<!-- =====================
-             日記 9
-        ===================== -->
+        <!-- 日記 9 -->
 
         <article class="entry">
-
 
             <div class="date">
                 2026.10.18
             </div>
 
-
             <h2>
                 盛岡ありがとう！
             </h2>
 
-
             <div class="text">
-
 
                 <p>
                     とっっっっっっっっっっても楽しかったです。盛岡、いいところですね。また行きたい。
                 </p>
 
-
                 <p>
                     小村さんのトークラジオも聞けて良かったー！相変わらずのクロノくん愛。さすがです。
                 </p>
-
 
                 <p>
                     最近x凍結されてる人多いですね・・・。私はまだ大丈夫ですが、ツイート内容気をつけたいと思います。
                 </p>
 
-
             </div>
-
 
         </article>
 
 
-
-
-
-
-　　　　<!-- =====================
-             日記 8
-        ===================== -->
+        <!-- 日記 8 -->
 
         <article class="entry">
-
 
             <div class="date">
                 2026.10.17
             </div>
 
-
             <h2>
                 盛岡へ！
             </h2>
 
-
             <div class="text">
-
 
                 <p>
                     今日は盛岡オフ会！相互さんとおデートだよ〜♡
                 </p>
 
-
                 <p>
                     即売会や、コロフェス、コロツアー以外でもこうして楽しい時間を共有できるのは、本当に嬉しさでいっぱいになる。
                 </p>
-
 
                 <p>
                     明日の徳島イベに参加される皆様、ぜひ現地実況お待ちしております。
                 </p>
 
-
             </div>
-
 
         </article>
 
 
-
-
-
-　　　　<!-- =====================
-             日記 7
-        ===================== -->
+        <!-- 日記 7 -->
 
         <article class="entry">
-
 
             <div class="date">
                 2026.10.15
             </div>
 
-
             <h2>
                 コロコロ最新号を読んだよ
             </h2>
 
-
             <div class="text">
-
 
                 <p>
                     センターカラー！嬉しい！ありがとうございます！
                 </p>
 
-
                 <p>
                     エン・サークルさん、いろんな人に刺さりそうなビジュしててびっくりした。関西弁糸目のインテリイギリス人(？）。糸目といえばイトダ先輩！！！シライさん以上にこれまたスペック高そうな人でキレ散らかしてそう笑
                 </p>
-
 
                 <p>
                     この先どうなるんだろう！クロノくんが１時の可能性に気づけなかったのが気になる！
                 </p>
 
-
             </div>
-
 
         </article>
 
 
-
-　　　　<!-- =====================
-             日記 6
-        ===================== -->
+        <!-- 日記 6 -->
 
         <article class="entry">
-
 
             <div class="date">
                 2026.10.11
             </div>
 
-
             <h2>
                 アニメイトグッズを買ったよ
             </h2>
 
-
             <div class="text">
-
 
                 <p>
                     ついに巻戻士のアニメイトグッズ発売〜ありがとうございます！
                 </p>
 
-
                 <p>
                     ランダム商法は悪と言い続けたい。という前置きしておくのですが、今回は一旦アクリルカードの人気投票イラストのあるセットを箱買いしました。厚さ1mmのアクリルグッズ、薄々すぎて最初は、昨今の小さくなりゆくカントリーマアムのような悲しさを感じていたのですが、いざ手元でみるととても良さがありますね。グッズってかさばりがちですが、今の収納を圧迫しないで保管できたのはとても良かったなと思います。
                 </p>
-
 
                 <p>
                     それはそれとして、人気投票の立ち絵は、アクスタが良かった！！！！！！！（泣）
                 </p>
 
-
             </div>
-
 
         </article>
 
 
-
-
-
-
-　　　　　
-　　　　　<!-- =====================
-             日記 5
-        ===================== -->
+        <!-- 日記 5 -->
 
         <article class="entry">
-
 
             <div class="date">
                 2026.10.08
             </div>
 
-
             <h2>
                 運命の巻戻士13_読了
             </h2>
 
-
             <div class="text">
-
 
                 <p>
                     最新巻購入しました！感想やら、考察やらを吐き出させてください。
                 </p>
-
 
                 <p>
                     まずは表紙！12巻に続き、明るい色味でとっても好きです！クロノくんは、タイムマシン研究会のメンバーにまじってお手伝い（？）をしているのかな？トキネちゃんとクロノくんが私たちを見ていて、ソラちゃんがトキネちゃんへ視線を送っているのがとってもいいなと思いました。きっと私たち凡人以下には目もくれない笑　ソラちゃんのクリスタルステッカーもちろんゲットです！やったー！なんだかんだでこれまでに発行されているステッカーは全て手に入れられてます！最近はもう当たり前のように特典がついてきてますけど、他のコロコロ作品の単行本には特典ないので、本当に本当に編集さんたちが気合を込めて特別につけてくれているのだと思います。感謝を忘れないようにしなくてはですね！コロコロ編集部の皆さんありがとー！
                 </p>
 
                 <p>
-                    
-                </p>
-
-                <p>
                     続きがとっても楽しみ！
                 </p>
 
-
             </div>
-
 
         </article>
 
 
-
-
-
-
-　　　　　
-　　　　　<!-- =====================
-             日記 4
-        ===================== -->
+        <!-- 日記 4 -->
 
         <article class="entry">
-
 
             <div class="date">
                 2026.09.21
             </div>
 
-
             <h2>
                 お絵描きしたい欲
             </h2>
 
-
             <div class="text">
-
 
                 <p>
                     一週間ってあっという間ですね。
                 </p>
 
-
                 <p>
                     10月号の感想文とか感想絵を描きたいなと思っていたのにあっという間に土日が終わりました。
                 </p>
-
 
                 <p>
                     前回の日記で、タイムカプセル任務とアンケとファンレターと言ってましたが、実際には昨日ポストインしました。己の意志の弱さ〜。９月３０日の印刷所さんの締め切りまでに、もう１つアクスタデザイン作成したいなと思ってます！かわいいニコニコアカバくんでいっぱいにしたいな！
                 </p>
 
-
             </div>
-
 
         </article>
 
 
-
-
-
-
-        <!-- =====================
-             日記 3
-        ===================== -->
+        <!-- 日記 3 -->
 
         <article class="entry">
-
 
             <div class="date">
                 2026.09.15
             </div>
 
-
             <h2>
                 10月号読了済
             </h2>
 
-
             <div class="text">
-
 
                 <p>
                     コロコロ10月号を読みました。
                 </p>
 
-
                 <p>
                     コロコロ別冊でA5サイズは初めて見ました。でかいの助かる〜。
                 </p>
-
 
                 <p>
                     タイムカプセル特典も楽しみ！今からコンビニ行って切手買ってきます！アンケとファンレターも書くぞ！
                 </p>
 
-
             </div>
-
 
         </article>
 
 
-
-
-        <!-- =====================
-             日記 ２
-        ===================== -->
+        <!-- 日記 2 -->
 
         <article class="entry">
-
 
             <div class="date">
                 2026.09.13
             </div>
 
-
             <h2>
                 イベント申し込み
             </h2>
 
-
             <div class="text">
-
 
                 <p>
                     1月大阪スパコミと３月東京春コミに申し込みをしました。
                 </p>
 
-
                 <p>
                     ありがたいことに相互さんと合体参加です。
                 </p>
-
 
                 <p>
                     いつもありがとうございます。準備楽しみです！
                 </p>
 
-
             </div>
-
 
         </article>
 
 
-
-        <!-- =====================
-             日記 1
-        ===================== -->
+        <!-- 日記 1 -->
 
         <article class="entry">
-
 
             <div class="date">
                 2026.09.12
             </div>
 
-
             <h2>
                 サイトを作り始めました
             </h2>
 
+            <div class="text">
 
-<div class="text">
+                <p>
+                    こんにちは、ユキツバキです。
+                </p>
 
-    <p>
-        こんにちは、ユキツバキです。
-    </p>
+                <p>
+                    今日から個人サイトを作り始めました。
+                    HTMLは初めてなので、少しずつ勉強しながら
+                    作っていこうと思います。
+                </p>
 
-    <p>
-        今日から個人サイトを作り始めました。
-        HTMLは初めてなので、少しずつ勉強しながら
-        作っていこうと思います。
-    </p>
+                <p>
+                    イラストもたくさん展示していく予定です。
+                </p>
 
-    <p>
-        イラストもたくさん展示していく予定です。
-    </p>
+                <p>
+                    よかったら見ていってください。
+                </p>
 
-    <p>
-        よかったら見ていってください。
-    </p>
+            </div>
 
-</div>
         </article>
 
 
-
     </main>
-
 
 
     <!-- =========================
@@ -757,40 +666,19 @@
 
     <section class="links">
 
+        <a href="index.html">HOME</a>
 
-        <a href="index.html">
-            HOME
-        </a>
+        <a href="about.html">ABOUT</a>
 
+        <a href="illustration.html">ILLUSTRATION</a>
 
-        <a href="about.html">
-            ABOUT
-        </a>
+        <a href="comic.html">COMIC</a>
 
+        <a href="diary.html">DIARY</a>
 
-        <a href="illustration.html">
-            ILLUSTRATION
-        </a>
-
-<a href="comic.html">
-    COMIC
-</a>
-
-
-
-        <a href="diary.html">
-            DIARY
-        </a>
-
-
-        <a href="event.html">
-            EVENT
-        </a>
-
-
+        <a href="event.html">EVENT</a>
 
     </section>
-
 
 
     <!-- =========================
@@ -800,7 +688,6 @@
     <a href="#top" class="pagetop">
         ↑ TOP
     </a>
-
 
 
 </body>
