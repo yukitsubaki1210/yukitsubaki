@@ -8,9 +8,7 @@
     <title>EVENT | ユキツバキ</title>
 
     <style>
-        /* =========================
-           全体
-        ========================= */
+        /* 全体 */
 
         body {
             background-color: #F7F0E3;
@@ -20,9 +18,7 @@
         }
 
 
-        /* =========================
-           ページタイトル
-        ========================= */
+        /* ページタイトル */
 
         h1 {
             text-align: center;
@@ -33,9 +29,7 @@
         }
 
 
-        /* =========================
-           HOMEへ戻る
-        ========================= */
+        /* HOMEへ戻る */
 
         .back {
             text-align: center;
@@ -55,20 +49,17 @@
         }
 
 
-        /* =========================
-           EVENT全体
-        ========================= */
+        /* EVENT全体 */
 
         .events {
             max-width: 1000px;
             margin: 100px auto 150px;
             padding: 0 30px;
+            box-sizing: border-box;
         }
 
 
-        /* =========================
-           大きな見出し
-        ========================= */
+        /* 大きな見出し */
 
         .section-title {
             color: #A83A3A;
@@ -81,9 +72,7 @@
         }
 
 
-        /* =========================
-           参加予定イベント
-        ========================= */
+        /* 参加予定イベント */
 
         .event-list {
             margin-bottom: 120px;
@@ -137,9 +126,7 @@
         }
 
 
-        /* =========================
-           CATALOG
-        ========================= */
+        /* CATALOG */
 
         .catalog {
             margin-top: 20px;
@@ -165,10 +152,7 @@
         }
 
 
-        /* =========================
-           頒布物一覧
-           横並び・自動折り返し
-        ========================= */
+        /* 頒布物一覧 */
 
         .items {
             display: grid;
@@ -182,9 +166,7 @@
         }
 
 
-        /* =========================
-           頒布物画像
-        ========================= */
+        /* 頒布物画像 */
 
         .item img {
             width: 85%;
@@ -200,9 +182,7 @@
         }
 
 
-        /* =========================
-           頒布物タイトル・説明
-        ========================= */
+        /* 頒布物タイトル・説明 */
 
         .item-title {
             color: #A83A3A;
@@ -219,9 +199,7 @@
         }
 
 
-        /* =========================
-           頒布ステータス
-        ========================= */
+        /* 頒布ステータス */
 
         .item-status {
             display: inline-block;
@@ -239,16 +217,13 @@
         }
 
 
-        /* =========================
-           詳細ビューア
-        ========================= */
+        /* 詳細ビューア */
 
         .modal {
             display: none;
             position: fixed;
             z-index: 1000;
-            left: 0;
-            top: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(35, 72, 58, 0.92);
@@ -263,6 +238,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            touch-action: pan-y;
         }
 
         .modal img {
@@ -272,12 +248,12 @@
             height: auto;
             display: block;
             object-fit: contain;
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
 
-        /* =========================
-           閉じるボタン
-        ========================= */
+        /* 閉じるボタン */
 
         .close {
             position: absolute;
@@ -287,6 +263,9 @@
             font-size: 40px;
             cursor: pointer;
             z-index: 1002;
+            background: none;
+            border: none;
+            font-family: serif;
         }
 
         .close:hover {
@@ -294,9 +273,7 @@
         }
 
 
-        /* =========================
-           前へ・次へ
-        ========================= */
+        /* 前へ・次へ */
 
         .prev,
         .next {
@@ -309,6 +286,9 @@
             user-select: none;
             z-index: 1001;
             padding: 20px;
+            background: none;
+            border: none;
+            font-family: serif;
         }
 
         .prev {
@@ -324,10 +304,37 @@
             color: #A83A3A;
         }
 
+        .prev:disabled,
+        .next:disabled {
+            opacity: 0.25;
+            cursor: default;
+        }
 
-        /* =========================
-           ページ番号
-        ========================= */
+
+        /* 最初のページに戻る */
+
+        .return-first {
+            display: none;
+            position: absolute;
+            right: 20px;
+            bottom: 65px;
+            z-index: 1002;
+            color: #F7F0E3;
+            background: transparent;
+            border: 1px solid #F7F0E3;
+            padding: 10px 16px;
+            font-family: serif;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .return-first:hover {
+            color: #A83A3A;
+            border-color: #A83A3A;
+        }
+
+
+        /* ページ番号 */
 
         .page-number {
             position: absolute;
@@ -340,9 +347,7 @@
         }
 
 
-        /* =========================
-           ページ下部リンク
-        ========================= */
+        /* ページ下部リンク */
 
         .links {
             margin: 100px auto 50px;
@@ -366,9 +371,7 @@
         }
 
 
-        /* =========================
-           TOPへ戻る
-        ========================= */
+        /* TOPへ戻る */
 
         .pagetop {
             display: block;
@@ -389,11 +392,14 @@
         }
 
 
-        /* =========================
-           スマートフォン対応
-        ========================= */
+        /* スマートフォン対応 */
 
         @media (max-width: 700px) {
+
+            h1 {
+                margin-top: 70px;
+                font-size: 32px;
+            }
 
             .events {
                 padding: 0 20px;
@@ -413,28 +419,39 @@
             }
 
             .modal img {
-                max-width: 78%;
-                max-height: 82%;
+                max-width: 82%;
+                max-height: 78%;
             }
 
             .prev,
             .next {
-                font-size: 32px;
+                font-size: 34px;
                 padding: 10px;
             }
 
             .prev {
-                left: 5px;
+                left: 3px;
             }
 
             .next {
-                right: 5px;
+                right: 3px;
             }
 
             .close {
-                top: 15px;
-                right: 20px;
+                top: 12px;
+                right: 18px;
                 font-size: 32px;
+            }
+
+            .return-first {
+                right: 50%;
+                transform: translateX(50%);
+                bottom: 60px;
+                white-space: nowrap;
+            }
+
+            .page-number {
+                bottom: 25px;
             }
         }
 
@@ -446,37 +463,28 @@
 <body id="top">
 
 
-    <!-- =========================
-         ページタイトル
-    ========================= -->
+    <!-- ページタイトル -->
 
     <h1>EVENT</h1>
 
 
-    <!-- =========================
-         HOMEへ戻る
-    ========================= -->
+    <!-- HOMEへ戻る -->
 
     <div class="back">
         <a href="index.html">← HOME</a>
     </div>
 
 
-    <!-- =========================
-         EVENT全体
-    ========================= -->
+    <!-- EVENT全体 -->
 
     <main class="events">
 
 
-        <!-- =========================
-             参加予定
-        ========================= -->
+        <!-- 参加予定 -->
 
         <section class="event-list">
 
             <h2 class="section-title">参加予定</h2>
-
 
             <article class="event">
 
@@ -537,18 +545,14 @@
 
 
 
-        <!-- =========================
-             CATALOG
-        ========================= -->
+        <!-- CATALOG -->
 
         <section class="catalog">
 
             <h2 class="section-title">CATALOG</h2>
 
 
-            <!-- =========================
-                 頒布予定
-            ========================= -->
+            <!-- 頒布予定 -->
 
             <section class="catalog-category">
 
@@ -556,14 +560,12 @@
 
                 <div class="items">
 
-
                     <article class="item">
 
                         <img
                             src="plan01.png"
                             alt="シラアカアクキー"
                             data-item="シラアカアクキー"
-                            onclick="openItemByTitle(this.dataset.item)"
                         >
 
                         <p class="item-title">
@@ -581,14 +583,12 @@
                     </article>
 
 
-
                     <article class="item">
 
                         <img
                             src="merch01-01.png"
                             alt="ぬい風アクキー"
                             data-item="ぬい風アクキー"
-                            onclick="openItemByTitle(this.dataset.item)"
                         >
 
                         <p class="item-title">
@@ -605,16 +605,13 @@
 
                     </article>
 
-
                 </div>
 
             </section>
 
 
 
-            <!-- =========================
-                 頒布済み
-            ========================= -->
+            <!-- 頒布済み -->
 
             <section class="catalog-category">
 
@@ -622,16 +619,12 @@
 
                 <div class="items">
 
-
-                    <!-- 作品1：これまでもこれからも -->
-
                     <article class="item">
 
                         <img
                             src="comic02-cover.png"
                             alt="これまでもこれからも"
                             data-item="これまでもこれからも"
-                            onclick="openItemByTitle(this.dataset.item)"
                         >
 
                         <p class="item-title">
@@ -649,16 +642,12 @@
                     </article>
 
 
-
-                    <!-- 作品2：きれいな手のはなし -->
-
                     <article class="item">
 
                         <img
                             src="comic01-cover.png"
                             alt="きれいな手のはなし"
                             data-item="きれいな手のはなし"
-                            onclick="openItemByTitle(this.dataset.item)"
                         >
 
                         <p class="item-title">
@@ -676,16 +665,12 @@
                     </article>
 
 
-
-                    <!-- 作品3：1210 -->
-
                     <article class="item">
 
                         <img
                             src="comic03-cover.png"
                             alt="1210"
                             data-item="1210"
-                            onclick="openItemByTitle(this.dataset.item)"
                         >
 
                         <p class="item-title">
@@ -702,7 +687,6 @@
 
                     </article>
 
-
                 </div>
 
             </section>
@@ -713,54 +697,64 @@
 
 
 
-    <!-- =========================
-         詳細ビューア
-    ========================= -->
+    <!-- 詳細ビューア -->
 
-    <div class="modal" id="itemModal">
+    <div
+        class="modal"
+        id="itemModal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="作品画像ビューア"
+    >
 
-        <div class="modal-content">
+        <div class="modal-content" id="modalContent">
 
-
-            <span
+            <button
                 class="close"
-                onclick="closeItem()"
+                id="closeButton"
+                type="button"
                 aria-label="閉じる"
             >
                 ×
-            </span>
+            </button>
 
-
-            <span
+            <button
                 class="prev"
-                onclick="previousItemPage()"
+                id="prevButton"
+                type="button"
                 aria-label="前の画像"
             >
                 ‹
-            </span>
-
+            </button>
 
             <img
                 id="itemImage"
                 src=""
-                alt="頒布物詳細"
+                alt=""
             >
 
-
-            <span
+            <button
                 class="next"
-                onclick="nextItemPage()"
+                id="nextButton"
+                type="button"
                 aria-label="次の画像"
             >
                 ›
-            </span>
+            </button>
 
+            <button
+                class="return-first"
+                id="returnFirstButton"
+                type="button"
+            >
+                最初のページに戻る
+            </button>
 
             <div
                 class="page-number"
                 id="itemPageNumber"
+                aria-live="polite"
             ></div>
-
 
         </div>
 
@@ -768,21 +762,11 @@
 
 
 
-    <!-- =========================
-         JavaScript
-    ========================= -->
+    <!-- JavaScript -->
 
     <script>
 
-        /*
-         * 作品データ
-         *
-         * title：作品タイトル
-         * pages：拡大表示する画像ファイル名
-         *
-         * 作品のタイトルと画像をセットで管理します。
-         * 作品を追加するときも、このデータに追加してください。
-         */
+        /* 作品データ */
 
         const items = {
 
@@ -794,7 +778,6 @@
                 ]
             },
 
-
             "ぬい風アクキー": {
                 title: "ぬい風アクキー",
                 pages: [
@@ -802,7 +785,6 @@
                     "merch01-02.png"
                 ]
             },
-
 
             "これまでもこれからも": {
                 title: "これまでもこれからも",
@@ -812,14 +794,12 @@
                 ]
             },
 
-
             "きれいな手のはなし": {
                 title: "きれいな手のはなし",
                 pages: [
-                    "comic01-cover.png",
+                    "comic01-cover.png"
                 ]
             },
-
 
             "1210": {
                 title: "1210",
@@ -832,17 +812,36 @@
         };
 
 
-        /* =========================
-           現在の作品・画像
-        ========================= */
+        /* 現在の作品・画像 */
 
         let currentItem = null;
         let currentItemPage = 0;
 
 
-        /* =========================
-           タイトルから作品を開く
-        ========================= */
+        /* 要素を取得 */
+
+        const modal = document.getElementById("itemModal");
+        const modalContent = document.getElementById("modalContent");
+        const itemImage = document.getElementById("itemImage");
+        const pageNumber = document.getElementById("itemPageNumber");
+        const prevButton = document.getElementById("prevButton");
+        const nextButton = document.getElementById("nextButton");
+        const closeButton = document.getElementById("closeButton");
+        const returnFirstButton = document.getElementById("returnFirstButton");
+
+
+        /* 作品画像をクリックしたら開く */
+
+        document.querySelectorAll(".item img[data-item]").forEach(function(image) {
+
+            image.addEventListener("click", function() {
+                openItemByTitle(this.dataset.item);
+            });
+
+        });
+
+
+        /* 作品を開く */
 
         function openItemByTitle(title) {
 
@@ -856,16 +855,15 @@
             currentItem = title;
             currentItemPage = 0;
 
-            document.getElementById("itemModal").style.display = "flex";
+            modal.style.display = "flex";
+            document.body.style.overflow = "hidden";
 
             updateItemPage();
 
         }
 
 
-        /* =========================
-           画像表示
-        ========================= */
+        /* 画像を表示する */
 
         function updateItemPage() {
 
@@ -875,101 +873,176 @@
                 return;
             }
 
-            const image = document.getElementById("itemImage");
-
-            image.onerror = function() {
-                console.error(
-                    "画像を読み込めませんでした:",
-                    image.src
-                );
+            itemImage.onerror = function() {
+                console.error("画像を読み込めませんでした:", item.pages[currentItemPage]);
             };
 
-            image.src = item.pages[currentItemPage];
-            image.alt = item.title;
+            itemImage.src = item.pages[currentItemPage];
+            itemImage.alt = item.title + " " + (currentItemPage + 1) + "ページ目";
 
-            document.getElementById("itemPageNumber").textContent =
+            pageNumber.textContent =
                 (currentItemPage + 1) + " / " + item.pages.length;
 
 
-            /* 画像が1枚だけなら矢印を隠す */
+            /* 前へボタン */
 
-            const showArrows = item.pages.length > 1;
+            prevButton.style.display =
+                item.pages.length > 1 && currentItemPage > 0
+                    ? "block"
+                    : "none";
 
-            document.querySelector(".prev").style.display =
-                showArrows ? "block" : "none";
 
-            document.querySelector(".next").style.display =
-                showArrows ? "block" : "none";
+            /* 次へボタン */
+
+            nextButton.style.display =
+                item.pages.length > 1 && currentItemPage < item.pages.length - 1
+                    ? "block"
+                    : "none";
+
+
+            /* 最終ページでは「最初のページに戻る」を表示 */
+
+            returnFirstButton.style.display =
+                item.pages.length > 1 && currentItemPage === item.pages.length - 1
+                    ? "block"
+                    : "none";
 
         }
 
 
-        /* =========================
-           前の画像
-           最初から最後へ戻る
-        ========================= */
+        /* 前の画像へ */
 
         function previousItemPage() {
 
             const item = items[currentItem];
 
-            if (!item || item.pages.length <= 1) {
+            if (!item || currentItemPage <= 0) {
                 return;
             }
 
             currentItemPage--;
-
-            if (currentItemPage < 0) {
-                currentItemPage = item.pages.length - 1;
-            }
-
             updateItemPage();
 
         }
 
 
-        /* =========================
-           次の画像
-           最後から最初へ戻る
-        ========================= */
+        /* 次の画像へ */
 
         function nextItemPage() {
 
             const item = items[currentItem];
 
-            if (!item || item.pages.length <= 1) {
+            if (!item || currentItemPage >= item.pages.length - 1) {
                 return;
             }
 
             currentItemPage++;
-
-            if (currentItemPage >= item.pages.length) {
-                currentItemPage = 0;
-            }
-
             updateItemPage();
 
         }
 
 
-        /* =========================
-           閉じる
-        ========================= */
+        /* 最初の画像へ戻る */
 
-        function closeItem() {
+        function returnToFirstPage() {
 
-            document.getElementById("itemModal").style.display = "none";
+            if (!currentItem) {
+                return;
+            }
+
+            currentItemPage = 0;
+            updateItemPage();
 
         }
 
 
-        /* =========================
-           キーボード操作
-        ========================= */
+        /* ビューアを閉じる */
+
+        function closeItem() {
+
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+
+            currentItem = null;
+            currentItemPage = 0;
+
+        }
+
+
+        /* ボタン操作 */
+
+        prevButton.addEventListener("click", previousItemPage);
+        nextButton.addEventListener("click", nextItemPage);
+        closeButton.addEventListener("click", closeItem);
+        returnFirstButton.addEventListener("click", returnToFirstPage);
+
+
+        /* スマートフォンの左右スワイプ */
+
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+
+        const swipeThreshold = 45;
+
+        modalContent.addEventListener("touchstart", function(event) {
+
+            if (event.touches.length !== 1) {
+                return;
+            }
+
+            touchStartX = event.touches[0].clientX;
+            touchStartY = event.touches[0].clientY;
+
+            touchEndX = touchStartX;
+            touchEndY = touchStartY;
+
+        }, { passive: true });
+
+
+        modalContent.addEventListener("touchend", function(event) {
+
+            if (!currentItem || event.changedTouches.length !== 1) {
+                return;
+            }
+
+            touchEndX = event.changedTouches[0].clientX;
+            touchEndY = event.changedTouches[0].clientY;
+
+            const differenceX = touchEndX - touchStartX;
+            const differenceY = touchEndY - touchStartY;
+
+            /* 上下スクロールを左右スワイプと誤認しない */
+
+            if (Math.abs(differenceX) < swipeThreshold) {
+                return;
+            }
+
+            if (Math.abs(differenceX) <= Math.abs(differenceY)) {
+                return;
+            }
+
+            if (differenceX < 0) {
+
+                /* 左へスワイプ：次の画像 */
+
+                nextItemPage();
+
+            } else {
+
+                /* 右へスワイプ：前の画像 */
+
+                previousItemPage();
+
+            }
+
+        }, { passive: true });
+
+
+        /* キーボード操作 */
 
         document.addEventListener("keydown", function(event) {
-
-            const modal = document.getElementById("itemModal");
 
             if (modal.style.display !== "flex") {
                 return;
@@ -990,28 +1063,21 @@
         });
 
 
-        /* =========================
-           背景クリックで閉じる
-        ========================= */
+        /* 背景をクリックしたら閉じる */
 
-        document.getElementById("itemModal").addEventListener(
-            "click",
-            function(event) {
+        modal.addEventListener("click", function(event) {
 
-                if (event.target === this) {
-                    closeItem();
-                }
-
+            if (event.target === modal) {
+                closeItem();
             }
-        );
+
+        });
 
     </script>
 
 
 
-    <!-- =========================
-         ページ下部リンク
-    ========================= -->
+    <!-- ページ下部リンク -->
 
     <section class="links">
 
@@ -1027,14 +1093,11 @@
 
         <a href="event.html">EVENT</a>
 
-
     </section>
 
 
 
-    <!-- =========================
-         ページ上部へ
-    ========================= -->
+    <!-- ページ上部へ -->
 
     <a href="#top" class="pagetop">
         ↑ TOP
